@@ -34,15 +34,23 @@
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_main"/>
+    <include layout="@layout/content_main" android:id="@+id/content_main"
+    />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
-            android:layout_width="wrap_content"
+            android:layout_margin="8dp"
+            app:layout_anchor="@id/content_main"
+            app:srcCompat="@drawable/ic_shopping_cart_2" app:backgroundTint="@color/colorPrimaryDark"
+            app:layout_anchorGravity="bottom|end" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:clickable="false"
+            android:focusableInTouchMode="false" android:cropToPadding="false"
+            android:scrollX="1dp" android:scrollY="-1dp" android:scaleX="1"/>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/fab_margin"
-            app:layout_anchor="@id/app_bar"
-            app:layout_anchorGravity="bottom|end"
-            app:srcCompat="@android:drawable/ic_dialog_email"/>
+            android:clickable="true" app:srcCompat="@drawable/ic_information" android:id="@+id/fabInfo"
+            app:layout_anchor="@id/app_bar" app:layout_anchorGravity="bottom|right"
+            app:backgroundTint="@color/colorPrimaryDark" android:layout_margin="8dp"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

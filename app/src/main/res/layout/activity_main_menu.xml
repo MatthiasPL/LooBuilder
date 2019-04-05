@@ -5,7 +5,8 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainMenuActivity" android:orientation="vertical">
+        tools:context=".MainMenuActivity" android:orientation="vertical"
+        android:background="@color/design_default_color_background">
 
     <ScrollView
             android:layout_width="match_parent"
@@ -26,16 +27,27 @@
                     app:layout_columnWeight="1"
                     app:layout_rowWeight="1"
                     android:layout_margin="8dp" app:cardElevation="4dp" app:cardCornerRadius="4dp"
-            >
+                    app:cardBackgroundColor="@color/design_default_color_background" android:clickable="true"
+                    android:foreground="?attr/selectableItemBackground" android:id="@+id/cardObudowa">
                 <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" android:id="@+id/linearLayout">
+                        android:layout_height="match_parent" android:id="@+id/linearLayout"
+                        android:foreground="?attr/selectableItemBackground">
                     <TextView
                             android:text="Obudowa"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginStart="20dp"/>
+                            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginStart="20dp"
+                            android:textSize="24sp" android:id="@+id/tvObudowa"
+                            android:textColor="@color/design_default_color_on_secondary"/>
+                    <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp" app:srcCompat="@drawable/ic_computer"
+                            android:id="@+id/imageView3"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginEnd="20dp"/>
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
@@ -44,16 +56,25 @@
                     app:layout_columnWeight="1"
                     app:layout_rowWeight="1"
                     android:layout_margin="8dp" app:cardElevation="4dp" app:cardCornerRadius="4dp"
-            >
+                    android:clickable="true" android:foreground="?attr/selectableItemBackground"
+                    android:id="@+id/cardProcesor">
                 <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" android:id="@+id/linearLayout">
                     <TextView
                             android:text="Procesor"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" android:id="@+id/textView2"
+                            android:layout_height="wrap_content" android:id="@+id/tvProcesor"
                             app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginStart="20dp"/>
+                            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginStart="20dp"
+                            android:textSize="24sp" android:textColor="@color/design_default_color_on_secondary"/>
+                    <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp" app:srcCompat="@drawable/ic_cpu"
+                            android:id="@+id/imageView4"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginEnd="20dp"/>
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
@@ -62,7 +83,8 @@
                     app:layout_columnWeight="1"
                     app:layout_rowWeight="1"
                     android:layout_margin="8dp" app:cardElevation="4dp" app:cardCornerRadius="4dp"
-            >
+                    android:clickable="true" android:foreground="?attr/selectableItemBackground"
+                    android:id="@+id/cardPlytaGlowna">
                 <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" android:id="@+id/linearLayout">
@@ -71,7 +93,16 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginStart="20dp"/>
+                            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginStart="20dp"
+                            android:textSize="24sp" android:id="@+id/tvPlytaGlowna"
+                            android:textColor="@color/design_default_color_on_secondary"/>
+                    <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp" app:srcCompat="@drawable/ic_motherboard"
+                            android:id="@+id/imageView5"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginEnd="20dp"/>
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
@@ -80,7 +111,8 @@
                     app:layout_columnWeight="1"
                     app:layout_rowWeight="1"
                     android:layout_margin="8dp" app:cardElevation="4dp" app:cardCornerRadius="4dp"
-            >
+                    android:clickable="true" android:foreground="?attr/selectableItemBackground"
+                    android:id="@+id/cardRAM">
                 <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" android:id="@+id/linearLayout">
@@ -89,7 +121,16 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginStart="20dp"/>
+                            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginStart="20dp"
+                            android:textSize="24sp" android:id="@+id/tvRAM"
+                            android:textColor="@color/design_default_color_on_secondary"/>
+                    <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp" app:srcCompat="@drawable/ic_ram"
+                            android:id="@+id/imageView6"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginEnd="20dp"/>
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
@@ -98,7 +139,8 @@
                     app:layout_columnWeight="1"
                     app:layout_rowWeight="1"
                     android:layout_margin="8dp" app:cardElevation="4dp" app:cardCornerRadius="4dp"
-            >
+                    android:clickable="true" android:foreground="?attr/selectableItemBackground"
+                    android:id="@+id/cardKartaGraficzna">
                 <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" android:id="@+id/linearLayout">
@@ -107,7 +149,16 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginStart="20dp"/>
+                            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginStart="20dp"
+                            android:textSize="24sp" android:id="@+id/tvKartaGraficzna"
+                            android:textColor="@color/design_default_color_on_secondary"/>
+                    <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp" app:srcCompat="@drawable/ic_graphics_card"
+                            android:id="@+id/imageView7"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginEnd="20dp"/>
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
@@ -116,7 +167,8 @@
                     app:layout_columnWeight="1"
                     app:layout_rowWeight="1"
                     android:layout_margin="8dp" app:cardElevation="4dp" app:cardCornerRadius="4dp"
-            >
+                    android:clickable="true" android:foreground="?attr/selectableItemBackground"
+                    android:id="@+id/cardChlodzenie">
                 <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" android:id="@+id/linearLayout">
@@ -125,7 +177,16 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginStart="20dp"/>
+                            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginStart="20dp"
+                            android:textSize="24sp" android:id="@+id/tvChlodzenie"
+                            android:textColor="@color/design_default_color_on_secondary"/>
+                    <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp" app:srcCompat="@drawable/ic_fan"
+                            android:id="@+id/imageView8"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginEnd="20dp"/>
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
@@ -134,7 +195,8 @@
                     app:layout_columnWeight="1"
                     app:layout_rowWeight="1"
                     android:layout_margin="8dp" app:cardElevation="4dp" app:cardCornerRadius="4dp"
-            >
+                    android:clickable="true" android:foreground="?attr/selectableItemBackground"
+                    android:id="@+id/cardDysk">
                 <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" android:id="@+id/linearLayout">
@@ -143,7 +205,16 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginStart="20dp"/>
+                            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginStart="20dp"
+                            android:textSize="24sp" android:id="@+id/tvDysk"
+                            android:textColor="@color/design_default_color_on_secondary"/>
+                    <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp" app:srcCompat="@drawable/ic_harddisk"
+                            android:id="@+id/imageView9"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginEnd="20dp"/>
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
@@ -152,7 +223,8 @@
                     app:layout_columnWeight="1"
                     app:layout_rowWeight="1"
                     android:layout_margin="8dp" app:cardElevation="4dp" app:cardCornerRadius="4dp"
-            >
+                    android:clickable="true" android:foreground="?attr/selectableItemBackground"
+                    android:id="@+id/cardZasilacz">
                 <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" android:id="@+id/linearLayout">
@@ -161,7 +233,16 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginStart="20dp"/>
+                            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginStart="20dp"
+                            android:textSize="24sp" android:id="@+id/tvZasilacz"
+                            android:textColor="@color/design_default_color_on_secondary"/>
+                    <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp" app:srcCompat="@drawable/ic_charger"
+                            android:id="@+id/imageView10"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginEnd="20dp"/>
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
         </androidx.gridlayout.widget.GridLayout>
