@@ -1,16 +1,22 @@
-package com.loopmoth.loobuilder
+package com.loopmoth.loobuilder.activities
 
 import android.content.Intent
+import android.graphics.Typeface
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.TextView
+import android.widget.Toolbar
+import com.loopmoth.loobuilder.R
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
-import kotlinx.android.synthetic.main.content_main.view.*
-import kotlinx.android.synthetic.main.row_item.view.*
+import android.app.Activity
+import android.graphics.Color
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,11 +29,25 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-        fab.setOnClickListener { view ->
+        fabCart.setOnClickListener { view ->
             Snackbar.make(view, "Cart", Snackbar.LENGTH_SHORT)
                 .setAction("Action", null)
                 .show()
         }
+
+        fabInfo.setOnClickListener{
+            val intent = Intent(this, HelpActivity::class.java)
+            // To pass any data to next activity
+            //intent.putExtra("keyIdentifier", value)
+            // start your next activity
+            startActivity(intent)
+        }
+
+        Picasso
+            .get()
+            .load("https://previews.123rf.com/images/elen1/elen11611/elen1161100188/68680219-dark-pcb-board-integrated-circuit-pc-parts-motherboard-chip-processor-texture-background.jpg")
+            .fit()
+            .into(imageView)
 
         initMenuList()
     }
@@ -51,7 +71,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initMenuList(){
         cardObudowa.setOnClickListener{
-            val intent = Intent(this, ProductList::class.java)
+            val intent = Intent(this, ProductListActivity::class.java)
             // To pass any data to next activity
             //intent.putExtra("keyIdentifier", value)
             // start your next activity

@@ -1,12 +1,14 @@
-package com.loopmoth.loobuilder
+package com.loopmoth.loobuilder.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.loopmoth.loobuilder.R
+import com.loopmoth.loobuilder.adapters.RecyclerViewAdapter
 import kotlinx.android.synthetic.main.activity_product_list.*
 
-class ProductList : AppCompatActivity() {
+class ProductListActivity : AppCompatActivity() {
 
     private var mNames = arrayListOf<String>()
     private var mDescs = arrayListOf<String>()

@@ -1,4 +1,4 @@
-package com.loopmoth.loobuilder
+package com.loopmoth.loobuilder.adapters
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -11,10 +11,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.row_item.view.*
-import java.text.DecimalFormat
-import android.app.Activity
 import android.content.ContextWrapper
+import com.loopmoth.loobuilder.activities.ProductListActivity
+import com.loopmoth.loobuilder.R
 
 class RecyclerViewAdapter(private val mContext: Context, names: ArrayList<String>, descs: ArrayList<String>, prices: ArrayList<Double>, icons: ArrayList<String>) :
     RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
@@ -51,6 +50,7 @@ class RecyclerViewAdapter(private val mContext: Context, names: ArrayList<String
         holder.mDesc.text = mDescs.get(position)
         holder.mPrice.text = "%.2f".format(mPrice.get(position)) + " zł"
         holder.mCount.text = mCounts.get(position).toString()
+
         Picasso
             .get()
             .load(mIcons.get(position))
@@ -67,7 +67,7 @@ class RecyclerViewAdapter(private val mContext: Context, names: ArrayList<String
                 ma.changeSum(getSum())
             }
             else{
-                Toast.makeText(mContext, "Błąd. Nie odnaleziono widoku nadrzędnego (ProductList).", Toast.LENGTH_SHORT).show()
+                Toast.makeText(mContext, "Błąd. Nie odnaleziono widoku nadrzędnego (ProductListActivity).", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -81,7 +81,7 @@ class RecyclerViewAdapter(private val mContext: Context, names: ArrayList<String
                 ma.changeSum(getSum())
             }
             else{
-                Toast.makeText(mContext, "Błąd. Nie odnaleziono widoku nadrzędnego (ProductList).", Toast.LENGTH_SHORT).show()
+                Toast.makeText(mContext, "Błąd. Nie odnaleziono widoku nadrzędnego (ProductListActivity).", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -125,12 +125,12 @@ class RecyclerViewAdapter(private val mContext: Context, names: ArrayList<String
         return suma
     }
 
-    private fun getMainActivity(context: Context): ProductList?{
+    private fun getMainActivity(context: Context): ProductListActivity?{
         if (context == null) {
             return null
         } else if (context is ContextWrapper) {
-            return if (context is ProductList) {
-                context as ProductList
+            return if (context is ProductListActivity) {
+                context as ProductListActivity
             } else {
                 getMainActivity((context as ContextWrapper).baseContext)
             }

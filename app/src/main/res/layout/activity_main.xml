@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
-        tools:context=".MainActivity">
+        tools:context=".activities.MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/app_bar"
@@ -24,12 +24,17 @@
                 app:layout_scrollFlags="scroll|exitUntilCollapsed"
                 app:contentScrim="?attr/colorPrimary">
 
+            <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" tools:srcCompat="@tools:sample/backgrounds/scenic"
+                    android:id="@+id/imageView"/>
             <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolbar"
                     android:layout_height="?attr/actionBarSize"
                     android:layout_width="match_parent"
                     app:layout_collapseMode="pin"
-                    app:popupTheme="@style/AppTheme.PopupOverlay"/>
+                    app:popupTheme="@style/AppTheme.PopupOverlay"
+            />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
@@ -38,19 +43,20 @@
     />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_margin="8dp"
+            android:id="@+id/fabCart"
             app:layout_anchor="@id/content_main"
-            app:srcCompat="@drawable/ic_shopping_cart_2" app:backgroundTint="@color/colorPrimaryDark"
+            app:srcCompat="@drawable/ic_shopping_cart_2" app:backgroundTint="@color/colorAccent"
             app:layout_anchorGravity="bottom|end" android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:clickable="false"
             android:focusableInTouchMode="false" android:cropToPadding="false"
-            android:scrollX="1dp" android:scrollY="-1dp" android:scaleX="1"/>
+            android:scrollX="1dp" android:scrollY="-1dp" android:scaleX="1" android:layout_marginBottom="16dp"
+            android:layout_marginRight="8dp"/>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clickable="true" app:srcCompat="@drawable/ic_information" android:id="@+id/fabInfo"
             app:layout_anchor="@id/app_bar" app:layout_anchorGravity="bottom|right"
-            app:backgroundTint="@color/colorPrimaryDark" android:layout_margin="8dp"/>
+            app:backgroundTint="@color/colorAccent"
+            android:layout_marginRight="8dp"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
