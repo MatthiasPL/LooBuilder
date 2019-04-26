@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import android.content.ContextWrapper
+import android.graphics.Color
 import com.loopmoth.loobuilder.activities.ProductListActivity
 import com.loopmoth.loobuilder.R
 
@@ -24,9 +25,10 @@ class RecyclerViewAdapter(private val mContext: Context, names: ArrayList<String
     private var mPrice = arrayListOf<Double>()
     private var mIcons = arrayListOf<String>()
 
-    private var mCounts = arrayListOf<Int>()
+    private var mFirstViewHolderID = 0
+    private var mLastViewHolderID = 0
 
-    private var sum: Double = 0.0
+    private var mChecks = arrayListOf<Boolean>()
 
     init {
         mNames = names
@@ -35,7 +37,7 @@ class RecyclerViewAdapter(private val mContext: Context, names: ArrayList<String
         mIcons = icons
 
         mNames.forEach{
-            mCounts.add(0)
+            mChecks.add(false)
         }
     }
 
@@ -49,7 +51,8 @@ class RecyclerViewAdapter(private val mContext: Context, names: ArrayList<String
         holder.mName.text = mNames.get(position)
         holder.mDesc.text = mDescs.get(position)
         holder.mPrice.text = "%.2f".format(mPrice.get(position)) + " zł"
-        holder.mCount.text = mCounts.get(position).toString()
+
+        mLastViewHolderID = position
 
         Picasso
             .get()
@@ -57,11 +60,29 @@ class RecyclerViewAdapter(private val mContext: Context, names: ArrayList<String
             .resize(128,128)
             .into(holder.mIcons)
 
-        holder.bAdd.setOnClickListener {
-            val count = holder.mCount.text.toString().toInt() + 1
-            holder.mCount.text = count.toString()
-            mCounts[position] = count
+        holder.bCheck.setOnClickListener {
+            mChecks[position] = ! mChecks[position]
 
+            uncheckRestIDs(position)
+
+            val ma = getMainActivity(mContext)
+            if(ma!=null){
+                ma.uncheckIDs(position)
+            }
+            else{
+                Toast.makeText(mContext, "Błąd. Nie odnaleziono widoku nadrzędnego (ProductListActivity).", Toast.LENGTH_SHORT).show()
+            }
+
+            if(mChecks[position]){
+                holder.bCheck.setText("ODZNACZ")
+            }
+            else{
+                holder.bCheck.setText("WYBIERZ")
+                holder.bCheck.setBackgroundColor(Color.BLACK)
+            }
+        }
+
+        /*holder.bCheck.setOnClickListener {
             val ma = getMainActivity(mContext)
             if(ma!=null){
                 ma.changeSum(getSum())
@@ -69,21 +90,7 @@ class RecyclerViewAdapter(private val mContext: Context, names: ArrayList<String
             else{
                 Toast.makeText(mContext, "Błąd. Nie odnaleziono widoku nadrzędnego (ProductListActivity).", Toast.LENGTH_SHORT).show()
             }
-        }
-
-        holder.bSub.setOnClickListener {
-            val count = holder.mCount.text.toString().toInt() - 1
-            holder.mCount.text = count.toString()
-            mCounts[position] = count
-
-            val ma = getMainActivity(mContext)
-            if(ma!=null){
-                ma.changeSum(getSum())
-            }
-            else{
-                Toast.makeText(mContext, "Błąd. Nie odnaleziono widoku nadrzędnego (ProductListActivity).", Toast.LENGTH_SHORT).show()
-            }
-        }
+        }*/
     }
 
     override fun getItemCount(): Int {
@@ -97,32 +104,19 @@ class RecyclerViewAdapter(private val mContext: Context, names: ArrayList<String
         internal var mPrice: TextView
         internal var mIcons: ImageView
 
-        internal var mCount: TextView
-        internal var bAdd: Button
-        internal var bSub: Button
+        internal var bCheck: Button
 
         init {
             mName = itemView.findViewById(R.id.tvProductName)
             mDesc = itemView.findViewById(R.id.tvProductDesc)
             mPrice = itemView.findViewById(R.id.tvProductPrice)
             mIcons = itemView.findViewById(R.id.ivProductPhoto)
-
-            mCount = itemView.findViewById(R.id.tvCount)
-            bAdd = itemView.findViewById(R.id.bAdd)
-            bSub = itemView.findViewById(R.id.bSub)
+            bCheck = itemView.findViewById(R.id.bCheck)
         }
     }
 
     companion object {
         private val TAG = "RecyclerViewAdapter"
-    }
-
-    fun getSum(): Double{
-        var suma = 0.0
-        for (i in mNames.indices){
-            suma += mPrice[i] * mCounts[i]
-        }
-        return suma
     }
 
     private fun getMainActivity(context: Context): ProductListActivity?{
@@ -136,5 +130,13 @@ class RecyclerViewAdapter(private val mContext: Context, names: ArrayList<String
             }
         }
         return null
+    }
+
+    private fun uncheckRestIDs(id: Int){
+        for (i in mChecks.indices){
+            if(i!=id){
+                mChecks[i] = false
+            }
+        }
     }
 }

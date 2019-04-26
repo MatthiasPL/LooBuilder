@@ -24,7 +24,7 @@ class UltraPagerAdapter(private val isMultiScr: Boolean) : PagerAdapter() {
         val linearLayout = LayoutInflater.from(container.context).inflate(R.layout.layout_child, null) as LinearLayout
         //new LinearLayout(container.getContext());
         val textView = linearLayout.findViewById(R.id.pager_textview) as TextView
-        textView.text = position.toString() + ""
+        textView.text = "Test: " + position.toString()
         linearLayout.id = R.id.item_id
         when (position) {
             0 -> linearLayout.setBackgroundColor(Color.parseColor("#2196F3"))

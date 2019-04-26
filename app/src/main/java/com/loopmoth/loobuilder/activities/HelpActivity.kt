@@ -23,7 +23,7 @@ class HelpActivity : AppCompatActivity() {
         val ultraViewPager = findViewById<View>(R.id.ultra_viewpager) as UltraViewPager
         ultraViewPager.setScrollMode(UltraViewPager.ScrollMode.HORIZONTAL)
         //initialize UltraPagerAdapter，and add child view to UltraViewPager
-        val adapter = UltraPagerAdapter(false)
+        val adapter = UltraPagerAdapter(true)
         ultraViewPager.adapter = adapter
 
         //initialize built-in indicator
@@ -31,13 +31,12 @@ class HelpActivity : AppCompatActivity() {
         //set style of indicators
         ultraViewPager.indicator
             .setOrientation(UltraViewPager.Orientation.HORIZONTAL)
-            .setFocusColor(Color.GREEN)
-            .setNormalColor(Color.WHITE)
-            .setRadius(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 5f, resources.displayMetrics).toInt())
+            .setFocusColor(Color.BLACK)
+            .setNormalColor(Color.LTGRAY)
+            .setRadius(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4f, resources.displayMetrics).toInt())
         //set the alignment
         ultraViewPager.indicator.setGravity(Gravity.CENTER_HORIZONTAL or Gravity.BOTTOM)
-        ultraViewPager.indicator.setMargin(0,0,0,10)
-        ultraViewPager.indicator.setFocusColor(Color.MAGENTA)
+        ultraViewPager.indicator.setMargin(0,0,0,30)
         //construct built-in indicator, and add it to  UltraViewPager
         ultraViewPager.indicator.build()
 

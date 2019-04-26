@@ -8,8 +8,8 @@
 
     <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:layout_margin="8dp"
-            app:cardElevation="4dp">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp">
         <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" android:id="@+id/linearLayout2"
@@ -19,7 +19,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:id="@+id/tvProductName"
                     android:layout_alignParentStart="true" android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp" android:layout_alignParentTop="true" android:textSize="24sp"
+                    android:layout_marginTop="16dp" android:layout_alignParentTop="true" android:textSize="18sp"
                     android:layout_toStartOf="@+id/ivProductPhoto" android:layout_marginEnd="8dp"/>
             <ImageView
                     android:layout_width="128dp"
@@ -33,9 +33,9 @@
                     android:layout_height="wrap_content" android:id="@+id/tvProductDesc"
                     android:layout_below="@+id/tvProductName" android:layout_alignParentStart="true"
                     android:layout_marginStart="16dp" android:layout_marginTop="8dp"
-                    android:layout_toStartOf="@+id/tvCount"
-                    android:layout_alignBottom="@+id/tvCount" android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="0dp"/>
+                    android:layout_toStartOf="@+id/bCheck"
+                    android:layout_alignBottom="@+id/bCheck"
+                    android:layout_marginEnd="8dp" android:layout_marginBottom="8dp"/>
             <TextView
                     android:text="Cena"
                     android:layout_width="wrap_content"
@@ -45,35 +45,15 @@
                     android:layout_marginEnd="16dp"
                     android:textAlignment="center"
                     android:layout_toEndOf="@+id/tvProductDesc"/>
-            <TextView
-                    android:text="Ilość"
+            <Button
+                    android:text="WYBIERZ"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/tvCount"
-                    android:layout_toStartOf="@+id/bAddProduct"
-                    android:layout_marginTop="8dp" android:layout_below="@+id/tvProductPrice"
-                    android:layout_alignStart="@+id/ivProductPhoto"
-                    android:layout_alignBottom="@+id/bAddProduct" android:layout_marginBottom="16dp"
-                    android:layout_marginEnd="8dp" android:layout_marginLeft="8dp" android:gravity="center"
-                    android:paddingBottom="4dp" android:layout_marginStart="0dp"/>
-            <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:layout_alignParentEnd="true"
-                    android:layout_below="@+id/tvProductPrice" android:layout_toEndOf="@+id/tvCount"
-                    android:layout_alignBottom="@+id/tvCount" android:layout_marginEnd="16dp"
-                    android:layout_marginTop="4dp">
-                <Button
-                        android:text="-"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" android:id="@+id/bSub" android:layout_weight="1"
-                        style="@style/Widget.AppCompat.Button" android:textSize="14sp" android:padding="0dp"/>
-                <Button
-                        android:text="+"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" android:id="@+id/bAdd" android:layout_weight="1"
-                        android:textSize="14sp" android:padding="0dp"/>
-            </LinearLayout>
+                    android:layout_height="wrap_content" android:id="@+id/bCheck" android:layout_weight="1"
+                    android:textSize="14sp"
+                    android:layout_below="@+id/tvProductPrice"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="16dp"
+                    android:layout_alignStart="@+id/ivProductPhoto"/>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 </LinearLayout>

@@ -7,6 +7,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.loopmoth.loobuilder.R
 import com.loopmoth.loobuilder.adapters.RecyclerViewAdapter
 import kotlinx.android.synthetic.main.activity_product_list.*
+import android.animation.ObjectAnimator
+import android.graphics.Color
+import kotlinx.android.synthetic.main.row_item.view.*
+
 
 class ProductListActivity : AppCompatActivity() {
 
@@ -14,6 +18,9 @@ class ProductListActivity : AppCompatActivity() {
     private var mDescs = arrayListOf<String>()
     private var mPrices = arrayListOf<Double>()
     private var mIcons = arrayListOf<String>()
+
+    private lateinit var mRecyclerView: RecyclerView
+    private lateinit var mAdapter: RecyclerViewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,14 +50,28 @@ class ProductListActivity : AppCompatActivity() {
     fun initRecyclerView() {
         val layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
 
-        val recyclerView: RecyclerView = findViewById(R.id.rvProductList)
-        recyclerView.setLayoutManager(layoutManager)
+        mRecyclerView = findViewById(R.id.rvProductList)
+        mRecyclerView.setLayoutManager(layoutManager)
 
-        val adapter = RecyclerViewAdapter(this, mNames, mDescs, mPrices, mIcons)
-        recyclerView.setAdapter(adapter)
+        mAdapter = RecyclerViewAdapter(this, mNames, mDescs, mPrices, mIcons)
+        mRecyclerView.setAdapter(mAdapter)
     }
 
-    fun changeSum(sum: Double){
-        tvSum.text = "%.2f".format(sum) + " zł"
+    fun uncheckIDs(position: Int){
+        var i = 0
+        val size = mRecyclerView.getChildCount()
+        while (i < size) {
+            val holder = mRecyclerView.getChildViewHolder(mRecyclerView.getChildAt(i))
+            if (holder != null) {
+                if(i!=position){
+                    holder.itemView.bCheck.setText("WYBIERZ")
+                    holder.itemView.bCheck.setBackgroundColor(Color.BLACK)
+                }
+                else{
+                    holder.itemView.bCheck.setBackgroundColor(Color.GRAY)
+                }
+            }
+            i++
+        }
     }
 }

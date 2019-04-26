@@ -21,11 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activities.MainMenuActivity">
-        </activity>
         <activity android:name=".activities.ProductListActivity" android:theme="@style/Theme.MaterialComponents.Light.DarkActionBar">
-        </activity>
-        <activity android:name=".HelpPager">
         </activity>
         <activity android:name=".activities.HelpActivity" android:theme="@style/AppTheme.NoActionBar">
         </activity>
