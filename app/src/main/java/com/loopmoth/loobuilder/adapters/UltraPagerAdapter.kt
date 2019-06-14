@@ -9,9 +9,11 @@ import android.view.View
 import androidx.viewpager.widget.PagerAdapter
 import com.loopmoth.loobuilder.R
 
-
+//adapter ekranu pomocy
+//TODO framenty z pomocą
 class UltraPagerAdapter(private val isMultiScr: Boolean) : PagerAdapter() {
 
+    //można tutaj zmienić na wielkość arraya z fragmentami zadeklarowanego gdzieś statycznie
     override fun getCount(): Int {
         return 5
     }
@@ -20,6 +22,7 @@ class UltraPagerAdapter(private val isMultiScr: Boolean) : PagerAdapter() {
         return view === `object`
     }
 
+    //załadowanie widoku
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val linearLayout = LayoutInflater.from(container.context).inflate(R.layout.layout_child, null) as LinearLayout
         //new LinearLayout(container.getContext());
@@ -27,6 +30,7 @@ class UltraPagerAdapter(private val isMultiScr: Boolean) : PagerAdapter() {
         textView.text = "Test: " + position.toString()
         linearLayout.id = R.id.item_id
         when (position) {
+            //można zmienić kolory tła podczas wczytywania, tak jak i tekst
             0 -> linearLayout.setBackgroundColor(Color.parseColor("#2196F3"))
             1 -> linearLayout.setBackgroundColor(Color.parseColor("#673AB7"))
             2 -> linearLayout.setBackgroundColor(Color.parseColor("#009688"))

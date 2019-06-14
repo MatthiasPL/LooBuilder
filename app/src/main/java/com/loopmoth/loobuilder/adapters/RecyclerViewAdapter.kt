@@ -16,6 +16,7 @@ import android.graphics.Color
 import com.loopmoth.loobuilder.activities.ProductListActivity
 import com.loopmoth.loobuilder.R
 
+//adapter do załadowania listy produktów z bazy
 class RecyclerViewAdapter(private val mContext: Context, names: ArrayList<String>, descs: ArrayList<String>, prices: ArrayList<Double>, icons: ArrayList<String>) :
     RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
 
@@ -48,23 +49,31 @@ class RecyclerViewAdapter(private val mContext: Context, names: ArrayList<String
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        //załadowanie tekstu
         holder.mName.text = mNames.get(position)
         holder.mDesc.text = mDescs.get(position)
         holder.mPrice.text = "%.2f".format(mPrice.get(position)) + " zł"
 
         mLastViewHolderID = position
 
+        //załadowanie obrazków
         Picasso
             .get()
             .load(mIcons.get(position))
             .resize(128,128)
             .into(holder.mIcons)
 
+        //przy zaznaczeniu przycisku wywoływana jest funckja uncheckIDs z aktywności, która odznacza wszystkie elementy
+        // poza wybranym
+        //TODO: w przypadku wybierania niektórych komponentów do kompuetra, będzie się dało wybrać większą
+        // ilość produktu
         holder.bCheck.setOnClickListener {
             mChecks[position] = ! mChecks[position]
 
+            //odznaczenie ID w lokalnej tablicy
             uncheckRestIDs(position)
 
+            //referencja do aktywności
             val ma = getMainActivity(mContext)
             if(ma!=null){
                 ma.uncheckIDs(position)
@@ -73,7 +82,9 @@ class RecyclerViewAdapter(private val mContext: Context, names: ArrayList<String
                 Toast.makeText(mContext, "Błąd. Nie odnaleziono widoku nadrzędnego (ProductListActivity).", Toast.LENGTH_SHORT).show()
             }
 
+            //zmiana tekstu przycisków
             if(mChecks[position]){
+                //wybrany przycisk ma poniższy tekst
                 holder.bCheck.setText("ODZNACZ")
             }
             else{

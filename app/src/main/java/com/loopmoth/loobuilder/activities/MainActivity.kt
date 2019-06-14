@@ -43,6 +43,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        //obrazek przy włączeniu aplikacji, który jest zamiszczony w MainActivity na samej górze
         Picasso
             .get()
             .load("https://previews.123rf.com/images/elen1/elen11611/elen1161100188/68680219-dark-pcb-board-integrated-circuit-pc-parts-motherboard-chip-processor-texture-background.jpg")
@@ -70,6 +71,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initMenuList(){
+
+        //TODO: oprogramowanie przycisków
         cardObudowa.setOnClickListener{
             val intent = Intent(this, ProductListActivity::class.java)
             // To pass any data to next activity

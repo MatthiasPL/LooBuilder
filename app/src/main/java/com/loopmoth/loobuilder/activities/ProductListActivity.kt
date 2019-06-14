@@ -44,6 +44,9 @@ class ProductListActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+
+        //TODO: Dodanie produktów z firebase
+
         initRecyclerView()
     }
 
@@ -53,21 +56,32 @@ class ProductListActivity : AppCompatActivity() {
         mRecyclerView = findViewById(R.id.rvProductList)
         mRecyclerView.setLayoutManager(layoutManager)
 
+        //Tutaj tworzymy adapter i podłączamy pod listę
+        //TODO zmiana argumentów RecyclerViewAdapter na obiekt który sobie zrzutujemy z bazy
         mAdapter = RecyclerViewAdapter(this, mNames, mDescs, mPrices, mIcons)
         mRecyclerView.setAdapter(mAdapter)
     }
 
+
+    //funkcja usuwająca zaznaczenia produktów
     fun uncheckIDs(position: Int){
+        //index do przechodzenia przez holder trzymający komponenty
         var i = 0
+
+        //ilość elementów w tym kontenerze
         val size = mRecyclerView.getChildCount()
+
         while (i < size) {
             val holder = mRecyclerView.getChildViewHolder(mRecyclerView.getChildAt(i))
             if (holder != null) {
+
+                //odznaczenie wszyskich komponentów poza wybranym
                 if(i!=position){
                     holder.itemView.bCheck.setText("WYBIERZ")
                     holder.itemView.bCheck.setBackgroundColor(Color.BLACK)
                 }
                 else{
+                    //wybrany komponent ma inny kolor
                     holder.itemView.bCheck.setBackgroundColor(Color.GRAY)
                 }
             }

@@ -11,6 +11,7 @@ import com.loopmoth.loobuilder.adapters.UltraPagerAdapter
 import com.tmall.ultraviewpager.UltraViewPager
 
 class HelpActivity : AppCompatActivity() {
+    //TODO: zrobienie pomocy dla użytkownika
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
