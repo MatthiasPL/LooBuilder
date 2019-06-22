@@ -13,8 +13,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import android.content.ContextWrapper
 import android.graphics.Color
+import com.google.android.material.snackbar.Snackbar
 import com.loopmoth.loobuilder.activities.ProductListActivity
 import com.loopmoth.loobuilder.R
+import com.loopmoth.loobuilder.R.id.tvProductName
+import com.loopmoth.loobuilder.activities.MainActivity
 
 //adapter do załadowania listy produktów z bazy
 class RecyclerViewAdapter(private val mContext: Context, names: ArrayList<String>, descs: ArrayList<String>, prices: ArrayList<Double>, icons: ArrayList<String>) :
@@ -67,7 +70,7 @@ class RecyclerViewAdapter(private val mContext: Context, names: ArrayList<String
         // poza wybranym
         //TODO: w przypadku wybierania niektórych komponentów do kompuetra, będzie się dało wybrać większą
         // ilość produktu
-        holder.bCheck.setOnClickListener {
+        holder.bCheck.setOnClickListener {view ->
             mChecks[position] = ! mChecks[position]
 
             //odznaczenie ID w lokalnej tablicy
@@ -86,6 +89,9 @@ class RecyclerViewAdapter(private val mContext: Context, names: ArrayList<String
             if(mChecks[position]){
                 //wybrany przycisk ma poniższy tekst
                 holder.bCheck.setText("ODZNACZ")
+                Snackbar.make(view, mNames[position]+" dodano do koszyka", Snackbar.LENGTH_SHORT)
+                    .setAction("Action", null)
+                    .show()
             }
             else{
                 holder.bCheck.setText("WYBIERZ")
