@@ -5,4 +5,5 @@ interface ComputerPart {
     val description: String
     val manufacturer: String
     val price: Double
+    val type: String
 }

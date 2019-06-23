@@ -18,6 +18,9 @@ import com.loopmoth.loobuilder.activities.ProductListActivity
 import com.loopmoth.loobuilder.R
 import com.loopmoth.loobuilder.R.id.tvProductName
 import com.loopmoth.loobuilder.activities.MainActivity
+import com.loopmoth.loobuilder.classes.SerializeCart
+import com.loopmoth.loobuilder.classes.parts.Case
+import com.loopmoth.loobuilder.interfaces.ComputerPart
 
 //adapter do załadowania listy produktów z bazy
 class RecyclerViewAdapter(private val mContext: Context, names: ArrayList<String>, descs: ArrayList<String>, prices: ArrayList<Double>, icons: ArrayList<String>) :
@@ -89,9 +92,20 @@ class RecyclerViewAdapter(private val mContext: Context, names: ArrayList<String
             if(mChecks[position]){
                 //wybrany przycisk ma poniższy tekst
                 holder.bCheck.setText("ODZNACZ")
-                Snackbar.make(view, mNames[position]+" dodano do koszyka", Snackbar.LENGTH_SHORT)
+
+                val serializer=SerializeCart()
+                //okreslenie wybranego elementu
+                val chosenElem=Case(mNames[position],mDescs[position],"",mPrice[position])
+                //zapis elementu do pliku
+                serializer.SaveCart(mContext,chosenElem)
+                //sprawdzenie czy element się zapisal
+                val test=serializer.LoadCart(mContext)
+                Snackbar.make(view, test.toString(), Snackbar.LENGTH_LONG)
                     .setAction("Action", null)
                     .show()
+                /*Snackbar.make(view, mNames[position]+ " dodano do koszyka", Snackbar.LENGTH_SHORT)
+                    .setAction("Action", null)
+                    .show()*/
             }
             else{
                 holder.bCheck.setText("WYBIERZ")
