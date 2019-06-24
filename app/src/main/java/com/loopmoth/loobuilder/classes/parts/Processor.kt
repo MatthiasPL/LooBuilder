@@ -2,7 +2,13 @@ package com.loopmoth.loobuilder.classes.parts
 
 import com.loopmoth.loobuilder.interfaces.ComputerPart
 
-class Processor(override val name: String,
-                override val description: String,
-                override val manufacturer: String,
-                override val price: Double): ComputerPart
+class Processor(override val nazwa: String,
+                override val producent: String,
+                override val cena: Double,
+                val ilosc_watkow: Int,
+                var liczba_rdzeni: Int,
+                var linia: String,
+                var taktowanie: Double,
+                var typ_gniazda: String,
+                var uklad_graficzny: String
+                ): ComputerPart

@@ -2,7 +2,10 @@ package com.loopmoth.loobuilder.classes.parts
 
 import com.loopmoth.loobuilder.interfaces.ComputerPart
 
-class RAM(override val name: String,
-          override val description: String,
-          override val manufacturer: String,
-          override val price: Double): ComputerPart
+class RAM(override val nazwa: String,
+          override val producent: String,
+          override val cena: Double,
+          val czestotliwosc_pracy_MHz: Int,
+          val liczba_modulow: Int,
+          val pojemnosc_GB: Int,
+          val typ_pamieci: String): ComputerPart
