@@ -13,5 +13,6 @@
             android:textSize="20dp" android:textAlignment="center"/>
     <ImageView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" app:srcCompat="@drawable/ic_cpu" android:id="@+id/pager_image"/>
+            android:layout_height="wrap_content" app:srcCompat="@drawable/ic_cpu" android:id="@+id/pager_image"
+            android:visibility="gone"/>
 </LinearLayout>

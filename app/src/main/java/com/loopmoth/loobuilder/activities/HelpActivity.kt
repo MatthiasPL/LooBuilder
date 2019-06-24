@@ -9,6 +9,7 @@ import android.view.View
 import com.loopmoth.loobuilder.R
 import com.loopmoth.loobuilder.adapters.UltraPagerAdapter
 import com.tmall.ultraviewpager.UltraViewPager
+import kotlinx.android.synthetic.main.activity_help.*
 
 class HelpActivity : AppCompatActivity() {
     //TODO: zrobienie pomocy dla użytkownika
@@ -45,5 +46,9 @@ class HelpActivity : AppCompatActivity() {
         //ultraViewPager.setInfiniteLoop(true)
         //enable auto-scroll mode
         //ultraViewPager.setAutoScroll(2000)
+
+        fab.setOnClickListener{
+            finish()
+        }
     }
 }
