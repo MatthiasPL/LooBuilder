@@ -5,6 +5,7 @@ import com.loopmoth.loobuilder.interfaces.ComputerPart
 class Dysk_HDD(override val nazwa: String,
                override val producent: String,
                override val cena: Double,
+               override val img: String,
                val dlugosc_mm: Int,
                val szerokosc_mm: Double,
                val format_dysku_cale: Double,

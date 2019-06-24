@@ -6,6 +6,7 @@ import com.loopmoth.loobuilder.interfaces.ComputerPart
 class Karta_graficzna(override val nazwa: String,
                       override val producent: String,
                       override val cena: Double,
+                      override val img: String,
                       val dlugosc_mm: Int,
                       val ilosc_pamieci_RAM_GB: Int,
                       val producent_chipsetu: String,

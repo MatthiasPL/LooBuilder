@@ -6,6 +6,7 @@ import com.loopmoth.loobuilder.interfaces.ComputerPart
 class Dysk_SSD(override val nazwa: String,
                override val producent: String,
                override val cena: Double,
+               override val img: String,
                val Format_dysku_cale: Double,
                val grubosc_mm: Int,
                val interfejs: String,

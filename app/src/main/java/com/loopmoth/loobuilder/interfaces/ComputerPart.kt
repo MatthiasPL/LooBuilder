@@ -4,4 +4,5 @@ interface ComputerPart {
     val nazwa: String
     val producent: String
     val cena: Double
+    val img: String
 }

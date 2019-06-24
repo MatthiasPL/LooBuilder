@@ -6,6 +6,7 @@ import com.loopmoth.loobuilder.interfaces.ComputerPart
 class Motherboard(override val nazwa: String,
                   override val producent: String,
                   override val cena: Double,
+                  override val img: String,
                   val chipset: String,
                   var chipset_graficzny: String,
                   var szerokosc: Int,

@@ -5,6 +5,7 @@ import com.loopmoth.loobuilder.interfaces.ComputerPart
 class Processor(override val nazwa: String,
                 override val producent: String,
                 override val cena: Double,
+                override val img: String,
                 val ilosc_watkow: Int,
                 var liczba_rdzeni: Int,
                 var linia: String,

@@ -6,6 +6,7 @@ import com.loopmoth.loobuilder.interfaces.ComputerPart
 class Obudowa(override val nazwa: String,
               override val producent: String,
               override val cena: Double,
+              override val img: String,
               val glebokosc_cm: Double,
               val kolor: String,
               val kompatybilnosc: ArrayList<Kompatybilnosc>,
