@@ -27,15 +27,21 @@ class UltraPagerAdapter(private val isMultiScr: Boolean) : PagerAdapter() {
         val linearLayout = LayoutInflater.from(container.context).inflate(R.layout.layout_child, null) as LinearLayout
         //new LinearLayout(container.getContext());
         val textView = linearLayout.findViewById(R.id.pager_textview) as TextView
-        textView.text = "Test: " + position.toString()
+
         linearLayout.id = R.id.item_id
         when (position) {
             //można zmienić kolory tła podczas wczytywania, tak jak i tekst
-            0 -> linearLayout.setBackgroundColor(Color.parseColor("#2196F3"))
-            1 -> linearLayout.setBackgroundColor(Color.parseColor("#673AB7"))
-            2 -> linearLayout.setBackgroundColor(Color.parseColor("#009688"))
-            3 -> linearLayout.setBackgroundColor(Color.parseColor("#607D8B"))
-            4 -> linearLayout.setBackgroundColor(Color.parseColor("#F44336"))
+            0 -> {linearLayout.setBackgroundColor(Color.parseColor("#2196F3"))
+                textView.text = "Dobierz części komputera wybierając je z list dostępnych pod konkretnymi elementami."}
+            1 -> {linearLayout.setBackgroundColor(Color.parseColor("#673AB7"))
+                textView.text = "Dodaj je do koszyka klikając przycisk WYBIERZ."}
+            2 -> {
+                linearLayout.setBackgroundColor(Color.parseColor("#009688"))
+                textView.text = "Przejdź do koszyka, aby sprawdzić podsumowanie wybranych elementów."}
+            3 -> {linearLayout.setBackgroundColor(Color.parseColor("#607D8B"))
+                textView.text = "Przejdź do sekcji sprawdzania wybranych części. Tu dostępny jest schemat budowy komputera."}
+            4 -> {linearLayout.setBackgroundColor(Color.parseColor("#F44336"))
+                textView.text = "Kolory tła danych części sugerują ich poprawne lub niepoprawne dopasowanie. Po kliknięciu danego elementu dostępna jest informacja o błędzie."}
         }
         container.addView(linearLayout)
         //        linearLayout.getLayoutParams().width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 180, container.getContext().getResources().getDisplayMetrics());

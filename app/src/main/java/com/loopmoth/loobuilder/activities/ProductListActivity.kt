@@ -26,18 +26,18 @@ class ProductListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_list)
 
-        mNames.add("Testowy produkt")
-        mDescs.add("Przykładowy opis")
+        mNames.add("Testowy produkt 1")
+        mDescs.add("Przykładowy opis 1")
         mPrices.add(75.0)
         mIcons.add("https://proline.pl/pic/bg021_0.jpg")
 
-        mNames.add("Testowy produkt")
-        mDescs.add("Przykładowy opis")
+        mNames.add("Testowy produkt 2")
+        mDescs.add("Przykładowy opis 2")
         mPrices.add(75.0)
         mIcons.add("https://proline.pl/pic/bg021_0.jpg")
 
-        mNames.add("Testowy produkt")
-        mDescs.add("Przykładowy opis")
+        mNames.add("Testowy produkt 3")
+        mDescs.add("Przykładowy opis 3")
         mPrices.add(75.0)
         mIcons.add("https://proline.pl/pic/bg021_0.jpg")
     }
