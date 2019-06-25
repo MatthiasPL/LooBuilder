@@ -1,22 +1,16 @@
 package com.loopmoth.loobuilder.activities
 
 import android.content.Intent
-import android.graphics.Typeface
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.TextView
-import android.widget.Toolbar
 import com.loopmoth.loobuilder.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
-import android.app.Activity
-import android.graphics.Color
-import com.loopmoth.loobuilder.interfaces.ComputerPart
 
 
 class MainActivity : AppCompatActivity() {
@@ -78,27 +72,58 @@ class MainActivity : AppCompatActivity() {
         cardObudowa.setOnClickListener{
             val intent = Intent(this, ProductListActivity::class.java)
             // To pass any data to next activity
-            //intent.putExtra("keyIdentifier", value)
+            intent.putExtra("ComponentName", "Obudowa")
             // start your next activity
             startActivity(intent)
         }
-        cardChlodzenie.setOnClickListener{
-
+        cardDyskHDD.setOnClickListener{
+            val intent = Intent(this, ProductListActivity::class.java)
+            // To pass any data to next activity
+            intent.putExtra("ComponentName", "DyskHDD")
+            // start your next activity
+            startActivity(intent)
         }
-        cardDysk.setOnClickListener{
-
+        cardDyskSSD.setOnClickListener{
+            val intent = Intent(this, ProductListActivity::class.java)
+            // To pass any data to next activity
+            intent.putExtra("ComponentName", "DyskSSD")
+            // start your next activity
+            startActivity(intent)
         }
         cardKartaGraficzna.setOnClickListener{
-
+            val intent = Intent(this, ProductListActivity::class.java)
+            // To pass any data to next activity
+            intent.putExtra("ComponentName", "KartaGraficzna")
+            // start your next activity
+            startActivity(intent)
         }
         cardPlytaGlowna.setOnClickListener{
-
+            val intent = Intent(this, ProductListActivity::class.java)
+            // To pass any data to next activity
+            intent.putExtra("ComponentName", "PlytaGlowna")
+            // start your next activity
+            startActivity(intent)
         }
         cardProcesor.setOnClickListener{
-
+            val intent = Intent(this, ProductListActivity::class.java)
+            // To pass any data to next activity
+            intent.putExtra("ComponentName", "Procesor")
+            // start your next activity
+            startActivity(intent)
         }
         cardRAM.setOnClickListener{
-
+            val intent = Intent(this, ProductListActivity::class.java)
+            // To pass any data to next activity
+            intent.putExtra("ComponentName", "RAM")
+            // start your next activity
+            startActivity(intent)
+        }
+        cardZasilacz.setOnClickListener {
+            val intent = Intent(this, ProductListActivity::class.java)
+            // To pass any data to next activity
+            intent.putExtra("ComponentName", "Zasilacz")
+            // start your next activity
+            startActivity(intent)
         }
     }
 

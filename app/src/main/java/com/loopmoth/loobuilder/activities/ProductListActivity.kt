@@ -9,6 +9,7 @@ import com.loopmoth.loobuilder.adapters.RecyclerViewAdapter
 import kotlinx.android.synthetic.main.activity_product_list.*
 import android.animation.ObjectAnimator
 import android.graphics.Color
+import android.widget.Toast
 import kotlinx.android.synthetic.main.row_item.view.*
 
 
@@ -21,6 +22,7 @@ class ProductListActivity : AppCompatActivity() {
 
     private lateinit var mRecyclerView: RecyclerView
     private lateinit var mAdapter: RecyclerViewAdapter
+    private lateinit var KOMPONENT: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +47,10 @@ class ProductListActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
+        //pobranie informacji o komponencie, ktory chcemy wyswietlic
+        val getextra=intent.extras
+        KOMPONENT=getextra.getString("ComponentName")
+        Toast.makeText(this,KOMPONENT,Toast.LENGTH_SHORT).show()
         //TODO: Dodanie produktów z firebase
 
         initRecyclerView()

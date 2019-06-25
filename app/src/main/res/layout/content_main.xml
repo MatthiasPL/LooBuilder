@@ -38,7 +38,7 @@
                         android:layout_margin="0dp" android:layout_marginBottom="1dp">
                     <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent" android:id="@+id/linearLayout"
+                            android:layout_height="match_parent" android:id="@+id/LLObudowa"
                             android:foreground="?attr/selectableItemBackground">
                         <TextView
                                 android:text="Obudowa"
@@ -69,7 +69,7 @@
                         android:layout_marginBottom="1dp">
                     <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent" android:id="@+id/linearLayout">
+                            android:layout_height="match_parent" android:id="@+id/LLProcesor">
                         <TextView
                                 android:text="Procesor"
                                 android:layout_width="wrap_content"
@@ -99,7 +99,7 @@
                         android:layout_marginBottom="1dp">
                     <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent" android:id="@+id/linearLayout">
+                            android:layout_height="match_parent" android:id="@+id/LLPlytaGlowna">
                         <TextView
                                 android:text="Płyta główna"
                                 android:layout_width="wrap_content"
@@ -129,7 +129,7 @@
                         android:layout_marginBottom="1dp">
                     <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent" android:id="@+id/linearLayout">
+                            android:layout_height="match_parent" android:id="@+id/LLRAM">
                         <TextView
                                 android:text="Pamięć RAM"
                                 android:layout_width="wrap_content"
@@ -159,7 +159,7 @@
                         android:layout_marginBottom="1dp">
                     <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent" android:id="@+id/linearLayout">
+                            android:layout_height="match_parent" android:id="@+id/LLKartaGraficzna">
                         <TextView
                                 android:text="Karta graficzna"
                                 android:layout_width="wrap_content"
@@ -185,25 +185,25 @@
                         app:layout_columnWeight="1"
                         app:layout_rowWeight="1"
                         android:clickable="true" android:foreground="?attr/selectableItemBackground"
-                        android:id="@+id/cardChlodzenie" android:layout_margin="0dp"
+                        android:id="@+id/cardDyskHDD" android:layout_margin="0dp"
                         app:cardBackgroundColor="@color/design_default_color_background"
                         android:layout_marginBottom="1dp">
                     <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent" android:id="@+id/linearLayout">
+                            android:layout_height="match_parent" android:id="@+id/LLDyskHDD">
                         <TextView
-                                android:text="Chłodzenie"
+                                android:text="Dysk HDD"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 app:layout_constraintTop_toTopOf="parent"
                                 app:layout_constraintBottom_toBottomOf="parent"
-                                android:textSize="18sp" android:id="@+id/tvChlodzenie"
+                                android:textSize="18sp" android:id="@+id/tvDyskHDD"
                                 android:textColor="@color/design_default_color_on_secondary"
-                                app:layout_constraintStart_toEndOf="@+id/imageView8" android:layout_marginStart="16dp"/>
+                                app:layout_constraintStart_toEndOf="@+id/imageView15" android:layout_marginStart="16dp"/>
                         <ImageView
                                 android:layout_width="48dp"
-                                android:layout_height="48dp" app:srcCompat="@drawable/ic_fan"
-                                android:id="@+id/imageView8"
+                                android:layout_height="48dp" app:srcCompat="@drawable/ic_harddisk"
+                                android:id="@+id/imageView15"
                                 app:layout_constraintTop_toTopOf="parent"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="32dp"/>
@@ -215,25 +215,26 @@
                         app:layout_columnWeight="1"
                         app:layout_rowWeight="1"
                         android:clickable="true" android:foreground="?attr/selectableItemBackground"
-                        android:id="@+id/cardDysk" android:layout_margin="0dp"
+                        android:id="@+id/cardDyskSSD" android:layout_margin="0dp"
                         app:cardBackgroundColor="@color/design_default_color_background"
                         android:layout_marginBottom="1dp">
                     <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent" android:id="@+id/linearLayout">
+                            android:layout_height="match_parent" android:id="@+id/LLDyskSSD">
                         <TextView
-                                android:text="Dysk"
+                                android:text="Dysk SSD"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 app:layout_constraintTop_toTopOf="parent"
                                 app:layout_constraintBottom_toBottomOf="parent"
-                                android:textSize="18sp" android:id="@+id/tvDysk"
+                                android:textSize="18sp" android:id="@+id/tvDyskSSD"
                                 android:textColor="@color/design_default_color_on_secondary"
-                                app:layout_constraintStart_toEndOf="@+id/imageView9" android:layout_marginStart="16dp"/>
+                                app:layout_constraintStart_toEndOf="@+id/imageView15"
+                                android:layout_marginStart="16dp"/>
                         <ImageView
                                 android:layout_width="48dp"
-                                android:layout_height="48dp" app:srcCompat="@drawable/ic_harddisk"
-                                android:id="@+id/imageView9"
+                                android:layout_height="48dp" app:srcCompat="@drawable/ic_solid_state_drive"
+                                android:id="@+id/imageView15"
                                 app:layout_constraintTop_toTopOf="parent"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="32dp"/>
@@ -250,7 +251,7 @@
                         android:layout_marginBottom="1dp">
                     <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent" android:id="@+id/linearLayout">
+                            android:layout_height="match_parent" android:id="@+id/LLZasilacz">
                         <TextView
                                 android:text="Zasilacz"
                                 android:layout_width="wrap_content"

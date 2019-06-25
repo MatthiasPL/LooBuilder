@@ -43,11 +43,12 @@
     <ImageView
             android:layout_width="0dp"
             android:layout_height="100dp" app:srcCompat="@drawable/ic_harddisk"
-            android:id="@+id/DyskIV"
+            android:id="@+id/DyskHDDIV"
             app:layout_constraintStart_toEndOf="@+id/PlytaglownaIV" android:layout_marginStart="8dp"
-            android:layout_marginBottom="32dp" app:layout_constraintBottom_toBottomOf="@+id/PlytaglownaIV"
+            app:layout_constraintBottom_toBottomOf="@+id/PlytaglownaIV"
             android:background="@drawable/border" android:layout_marginEnd="4dp"
-            app:layout_constraintEnd_toEndOf="@+id/ObudowaIV" android:padding="8dp"/>
+            app:layout_constraintEnd_toEndOf="@+id/ObudowaIV" android:padding="8dp"
+            app:layout_constraintHorizontal_bias="1.0"/>
     <ImageView
             android:layout_width="100dp"
             android:layout_height="80dp" app:srcCompat="@drawable/ic_cpu"
@@ -70,4 +71,12 @@
             app:layout_constraintEnd_toEndOf="@+id/PlytaglownaIV" android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toBottomOf="@+id/PlytaglownaIV" app:layout_constraintHorizontal_bias="0.523"
             android:padding="8dp" android:background="@drawable/border"/>
+    <ImageView
+            android:layout_width="0dp"
+            android:layout_height="100dp" app:srcCompat="@drawable/ic_solid_state_drive"
+            android:id="@+id/DyskSSDIV"
+            app:layout_constraintStart_toEndOf="@+id/PlytaglownaIV"
+            android:layout_marginStart="8dp" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/DyskHDDIV" app:layout_constraintEnd_toEndOf="@+id/ObudowaIV"
+            android:padding="8dp" android:background="@drawable/border" android:layout_marginEnd="4dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
