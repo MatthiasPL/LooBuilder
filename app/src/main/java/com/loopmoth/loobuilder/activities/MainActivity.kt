@@ -1,16 +1,23 @@
 package com.loopmoth.loobuilder.activities
 
 import android.content.Intent
+import android.graphics.Typeface
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.TextView
+import android.widget.Toolbar
 import com.loopmoth.loobuilder.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
+import android.app.Activity
+import android.graphics.Color
+import com.google.firebase.FirebaseApp
+import com.loopmoth.loobuilder.interfaces.ComputerPart
 
 
 class MainActivity : AppCompatActivity() {
@@ -18,6 +25,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
+        FirebaseApp.initializeApp(this)
     }
 
     override fun onResume() {

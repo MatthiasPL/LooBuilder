@@ -10,6 +10,9 @@ import kotlinx.android.synthetic.main.activity_product_list.*
 import android.animation.ObjectAnimator
 import android.graphics.Color
 import android.widget.Toast
+import com.google.firebase.FirebaseApp
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.row_item.view.*
 
 
@@ -20,6 +23,8 @@ class ProductListActivity : AppCompatActivity() {
     private var mPrices = arrayListOf<Double>()
     private var mIcons = arrayListOf<String>()
 
+    private lateinit var database: DatabaseReference
+
     private lateinit var mRecyclerView: RecyclerView
     private lateinit var mAdapter: RecyclerViewAdapter
     private lateinit var KOMPONENT: String
@@ -27,6 +32,11 @@ class ProductListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_list)
+
+        FirebaseApp.initializeApp(this)
+        database = FirebaseDatabase.getInstance().reference
+
+        database.child("test").setValue("Test")
 
         mNames.add("Testowy produkt 1")
         mDescs.add("Przykładowy opis 1")
@@ -93,5 +103,9 @@ class ProductListActivity : AppCompatActivity() {
             }
             i++
         }
+    }
+
+    private fun initHardDrive(){
+
     }
 }

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "8634177954",
+    "firebase_url": "https://loobazadanych.firebaseio.com",
+    "project_id": "loobazadanych",
+    "storage_bucket": "loobazadanych.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:8634177954:android:b5f5c07f4a961c0b",
+        "android_client_info": {
+          "package_name": "com.loopmoth.loobuilder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "8634177954-7ndgc5ga0hhdh1qb51fbs2g26jfbnqvq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChZHiA1_5aLEfvzFgE9gKv92hx7gUzATI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "8634177954-7ndgc5ga0hhdh1qb51fbs2g26jfbnqvq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
