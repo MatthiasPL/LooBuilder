@@ -1,3 +1,5 @@
 package com.loopmoth.loobuilder.classes.subclasses
 
-class Kompatybilnosc(var nazwa: String)
+class Kompatybilnosc(){
+    lateinit var nazwa: String
+}

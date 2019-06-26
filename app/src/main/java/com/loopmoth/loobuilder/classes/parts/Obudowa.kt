@@ -3,14 +3,16 @@ package com.loopmoth.loobuilder.classes.parts
 import com.loopmoth.loobuilder.classes.subclasses.Kompatybilnosc
 import com.loopmoth.loobuilder.interfaces.ComputerPart
 
-class Obudowa(override val nazwa: String,
-              override val producent: String,
-              override val cena: Double,
-              override val img: String,
-              val glebokosc_cm: Double,
-              val kolor: String,
-              val kompatybilnosc: ArrayList<Kompatybilnosc>,
-              val szerokosc_cm: Double,
-              val typ_obudowy: String,
-              val waga_kg: Double,
-              val wysokosc_cm: Double): ComputerPart
+class Obudowa(): ComputerPart {
+    override lateinit var nazwa: String
+    override lateinit var producent: String
+    override var cena: Double = 0.0
+    override lateinit var img: String
+    var glebokosc_cm: Double = 0.0
+    lateinit var kolor: String
+    lateinit var kompatybilnosc: ArrayList<Kompatybilnosc>
+    var szerokosc_cm: Double = 0.0
+    lateinit var typ_obudowy: String
+    var waga_kg: Double = 0.0
+    var wysokosc_cm: Double =0.0
+}

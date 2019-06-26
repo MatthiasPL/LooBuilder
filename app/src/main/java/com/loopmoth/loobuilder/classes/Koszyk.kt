@@ -8,7 +8,7 @@ class Koszyk(
     val karta_graficzna: Karta_graficzna?,
     val motherboard: Motherboard?,
     val obudowa: Obudowa?,
-    val processor: Processor?,
+    val processor: Procesor?,
     val ram: RAM?,
     val zasilacz: Zasilacz?
 )

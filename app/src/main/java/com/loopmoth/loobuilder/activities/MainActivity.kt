@@ -87,28 +87,28 @@ class MainActivity : AppCompatActivity() {
         cardDyskHDD.setOnClickListener{
             val intent = Intent(this, ProductListActivity::class.java)
             // To pass any data to next activity
-            intent.putExtra("ComponentName", "DyskHDD")
+            intent.putExtra("ComponentName", "Dysk_HDD")
             // start your next activity
             startActivity(intent)
         }
         cardDyskSSD.setOnClickListener{
             val intent = Intent(this, ProductListActivity::class.java)
             // To pass any data to next activity
-            intent.putExtra("ComponentName", "DyskSSD")
+            intent.putExtra("ComponentName", "Dysk_SSD")
             // start your next activity
             startActivity(intent)
         }
         cardKartaGraficzna.setOnClickListener{
             val intent = Intent(this, ProductListActivity::class.java)
             // To pass any data to next activity
-            intent.putExtra("ComponentName", "KartaGraficzna")
+            intent.putExtra("ComponentName", "Karta_graficzna")
             // start your next activity
             startActivity(intent)
         }
         cardPlytaGlowna.setOnClickListener{
             val intent = Intent(this, ProductListActivity::class.java)
             // To pass any data to next activity
-            intent.putExtra("ComponentName", "PlytaGlowna")
+            intent.putExtra("ComponentName", "Plyta_glowna")
             // start your next activity
             startActivity(intent)
         }

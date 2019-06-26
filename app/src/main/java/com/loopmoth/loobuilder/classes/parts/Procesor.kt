@@ -2,15 +2,15 @@ package com.loopmoth.loobuilder.classes.parts
 
 import com.loopmoth.loobuilder.interfaces.ComputerPart
 
-class Dysk_SSD(): ComputerPart{
+class Procesor(): ComputerPart{
     override lateinit var nazwa: String
     override lateinit var producent: String
     override var cena: Double = 0.0
     override lateinit var img: String
-    var Format_dysku_cale: Double = 0.0
-    var grubosc_mm: Int = 0
-    lateinit var interfejs: String
-    var pojemnosc_GB: Int = 0
-    var szybkosc_odczytu_MB_s: Int = 0
-    var szybkosc_zapisu_MB_s: Int = 0
+    var ilosc_watkow: Int = 0
+    var liczba_rdzeni: Int = 0
+    lateinit var linia: String
+    var taktowanie: Double = 0.0
+    lateinit var typ_gniazda: String
+    lateinit var uklad_graficzny: String
 }

@@ -10,10 +10,15 @@ import kotlinx.android.synthetic.main.activity_product_list.*
 import android.animation.ObjectAnimator
 import android.graphics.Color
 import android.widget.Toast
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.FirebaseApp
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.row_item.view.*
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.ValueEventListener
+import com.loopmoth.loobuilder.classes.parts.*
 
 
 class ProductListActivity : AppCompatActivity() {
@@ -24,6 +29,14 @@ class ProductListActivity : AppCompatActivity() {
     private var mIcons = arrayListOf<String>()
 
     private lateinit var database: DatabaseReference
+    private val hddArray: MutableList<Dysk_HDD> = mutableListOf()
+    private val ssdArray: MutableList<Dysk_SSD> = mutableListOf()
+    private val karta_graficznaArray: MutableList<Karta_graficzna> = mutableListOf()
+    private val motherboardArray: MutableList<Motherboard> = mutableListOf()
+    private val obudowaArray: MutableList<Obudowa> = mutableListOf()
+    private val procesorArray: MutableList<Procesor> = mutableListOf()
+    private val ramArray: MutableList<RAM> = mutableListOf()
+    private val zasilaczArray: MutableList<Zasilacz> = mutableListOf()
 
     private lateinit var mRecyclerView: RecyclerView
     private lateinit var mAdapter: RecyclerViewAdapter
@@ -36,9 +49,7 @@ class ProductListActivity : AppCompatActivity() {
         FirebaseApp.initializeApp(this)
         database = FirebaseDatabase.getInstance().reference
 
-        database.child("test").setValue("Test")
-
-        mNames.add("Testowy produkt 1")
+        /*mNames.add("Testowy produkt 1")
         mDescs.add("Przykładowy opis 1")
         mPrices.add(75.0)
         mIcons.add("https://proline.pl/pic/bg021_0.jpg")
@@ -51,7 +62,7 @@ class ProductListActivity : AppCompatActivity() {
         mNames.add("Testowy produkt 3")
         mDescs.add("Przykładowy opis 3")
         mPrices.add(75.0)
-        mIcons.add("https://proline.pl/pic/bg021_0.jpg")
+        mIcons.add("https://proline.pl/pic/bg021_0.jpg")*/
     }
 
     override fun onResume() {
@@ -62,8 +73,7 @@ class ProductListActivity : AppCompatActivity() {
         KOMPONENT=getextra.getString("ComponentName")
         Toast.makeText(this,KOMPONENT,Toast.LENGTH_SHORT).show()
         //TODO: Dodanie produktów z firebase
-
-        initRecyclerView()
+        initProducts()
     }
 
     fun initRecyclerView() {
@@ -105,7 +115,129 @@ class ProductListActivity : AppCompatActivity() {
         }
     }
 
-    private fun initHardDrive(){
+    private fun initProducts(){
+        database.child("Podzespoly").child(this.KOMPONENT).addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
 
+                clearAllProductsArrays()
+
+                when{
+                    KOMPONENT == "Dysk_HDD" -> {
+                        dataSnapshot.children.mapNotNullTo(hddArray) {
+                            it.getValue<Dysk_HDD>(Dysk_HDD::class.java)
+                        }
+                        hddArray.forEach {
+                            mNames.add(it.nazwa)
+                            mDescs.add(it.interfejs)
+                            mPrices.add(it.cena)
+                            mIcons.add(it.img)
+                        }
+                    }
+
+                    KOMPONENT == "Dysk_SSD" ->{
+                        dataSnapshot.children.mapNotNullTo(ssdArray) {
+                            it.getValue<Dysk_SSD>(Dysk_SSD::class.java)
+                        }
+                        ssdArray.forEach {
+                            mNames.add(it.nazwa)
+                            mDescs.add(it.interfejs)
+                            mPrices.add(it.cena)
+                            mIcons.add(it.img)
+                        }
+                    }
+
+                    KOMPONENT == "Karta_graficzna" ->{
+                        dataSnapshot.children.mapNotNullTo(karta_graficznaArray) {
+                            it.getValue<Karta_graficzna>(Karta_graficzna::class.java)
+                        }
+                        karta_graficznaArray.forEach {
+                            mNames.add(it.nazwa)
+                            mDescs.add(it.typ_zlacza)
+                            mPrices.add(it.cena)
+                            mIcons.add(it.img)
+                        }
+                    }
+
+                    KOMPONENT == "Plyta_glowna" ->{
+                        dataSnapshot.children.mapNotNullTo(motherboardArray) {
+                            it.getValue<Motherboard>(Motherboard::class.java)
+                        }
+                        motherboardArray.forEach {
+                            mNames.add(it.nazwa)
+                            mDescs.add(it.chipset)
+                            mPrices.add(it.cena)
+                            mIcons.add(it.img)
+                        }
+                    }
+
+                    KOMPONENT == "Obudowa" ->{
+                        dataSnapshot.children.mapNotNullTo(obudowaArray) {
+                            it.getValue<Obudowa>(Obudowa::class.java)
+                        }
+                        obudowaArray.forEach {
+                            mNames.add(it.nazwa)
+                            mDescs.add(it.typ_obudowy)
+                            mPrices.add(it.cena)
+                            mIcons.add(it.img)
+                        }
+                    }
+
+                    KOMPONENT == "Procesor" ->{
+                        dataSnapshot.children.mapNotNullTo(procesorArray) {
+                            it.getValue<Procesor>(Procesor::class.java)
+                        }
+                        procesorArray.forEach {
+                            mNames.add(it.nazwa)
+                            mDescs.add(it.typ_gniazda)
+                            mPrices.add(it.cena)
+                            mIcons.add(it.img)
+                        }
+                    }
+
+                    KOMPONENT == "RAM" ->{
+                        dataSnapshot.children.mapNotNullTo(ramArray) {
+                            it.getValue<RAM>(RAM::class.java)
+                        }
+                        ramArray.forEach {
+                            mNames.add(it.nazwa)
+                            mDescs.add(it.typ_pamieci)
+                            mPrices.add(it.cena)
+                            mIcons.add(it.img)
+                        }
+                    }
+
+                    KOMPONENT == "Zasilacz" ->{
+                        dataSnapshot.children.mapNotNullTo(zasilaczArray) {
+                            it.getValue<Zasilacz>(Zasilacz::class.java)
+                        }
+                        zasilaczArray.forEach {
+                            mNames.add(it.nazwa)
+                            mDescs.add(it.standard)
+                            mPrices.add(it.cena)
+                            mIcons.add(it.img)
+                        }
+                    }
+                }
+                initRecyclerView()
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                //Log.e(FragmentActivity.TAG, "onCancelled", databaseError.toException())
+                Snackbar.make(scrollview, databaseError.toException().toString(), Snackbar.LENGTH_SHORT)
+                    .setAction("Action", null)
+                    .show()
+            }
+        })
+    }
+
+    private fun clearAllProductsArrays(){
+        hddArray.clear()
+        ssdArray.clear()
+        karta_graficznaArray.clear()
+        motherboardArray.clear()
+        obudowaArray.clear()
+        procesorArray.clear()
+        ramArray.clear()
+        zasilaczArray.clear()
     }
 }
