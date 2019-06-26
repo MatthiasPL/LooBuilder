@@ -17,7 +17,13 @@ import kotlinx.android.synthetic.main.content_main.*
 import android.app.Activity
 import android.graphics.Color
 import com.google.firebase.FirebaseApp
+import com.google.firebase.database.FirebaseDatabase
+import com.loopmoth.loobuilder.classes.User
 import com.loopmoth.loobuilder.interfaces.ComputerPart
+import java.io.BufferedReader
+import java.io.IOException
+import java.io.InputStreamReader
+import java.io.OutputStreamWriter
 
 
 class MainActivity : AppCompatActivity() {
@@ -53,6 +59,8 @@ class MainActivity : AppCompatActivity() {
             .into(imageView)
 
         initMenuList()
+
+        readUserID()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -139,5 +147,55 @@ class MainActivity : AppCompatActivity() {
         Snackbar.make(view, text, Snackbar.LENGTH_SHORT)
             .setAction(text, null)
             .show()
+    }
+
+    fun readUserID(){
+        val filename = "userID.conf"
+        //tworzy się nowy plik, gdzie przechowywany jest ID użytkownika tworzony przez FireB
+
+        if(fileList().contains(filename)) {
+            //jeżeli plik istnieje
+            readID(filename)
+        }
+        else{
+            createFileWithID(filename)
+        }
+    }
+
+    fun createFileWithID(filename: String){
+        //tworzy plik
+        try {
+            val database = FirebaseDatabase.getInstance().reference
+            val newUser = database.child("users").push()
+            val user = User(newUser.key)
+            newUser.setValue(user)
+
+            val file = OutputStreamWriter(openFileOutput(filename, Activity.MODE_PRIVATE))
+            file.write (newUser.key)
+            file.flush ()
+            file.close ()
+
+            //Toast.makeText(this, "stworzono", Toast.LENGTH_LONG).show()
+        } catch (e : IOException) {
+        }
+    }
+
+    fun readID(filename: String){
+        //czyta ID
+        try {
+            val file = InputStreamReader(openFileInput(filename))
+            val br = BufferedReader(file)
+            var line = br.readLine()
+            val all = StringBuilder()
+            while (line != null) {
+                all.append(line + "\n")
+                line = br.readLine()
+            }
+            br.close()
+            file.close()
+            //tvID.text=all
+        }
+        catch (e: IOException) {
+        }
     }
 }

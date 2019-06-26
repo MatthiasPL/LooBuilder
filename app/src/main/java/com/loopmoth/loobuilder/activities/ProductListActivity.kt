@@ -18,7 +18,11 @@ import kotlinx.android.synthetic.main.row_item.view.*
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.ValueEventListener
+import com.loopmoth.loobuilder.classes.KoszykTest
 import com.loopmoth.loobuilder.classes.parts.*
+import java.io.BufferedReader
+import java.io.IOException
+import java.io.InputStreamReader
 
 
 class ProductListActivity : AppCompatActivity() {
@@ -42,27 +46,16 @@ class ProductListActivity : AppCompatActivity() {
     private lateinit var mAdapter: RecyclerViewAdapter
     private lateinit var KOMPONENT: String
 
+    private var koszykTest: KoszykTest? = null
+
+    val filename = "userID.conf"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_list)
 
         FirebaseApp.initializeApp(this)
         database = FirebaseDatabase.getInstance().reference
-
-        /*mNames.add("Testowy produkt 1")
-        mDescs.add("Przykładowy opis 1")
-        mPrices.add(75.0)
-        mIcons.add("https://proline.pl/pic/bg021_0.jpg")
-
-        mNames.add("Testowy produkt 2")
-        mDescs.add("Przykładowy opis 2")
-        mPrices.add(75.0)
-        mIcons.add("https://proline.pl/pic/bg021_0.jpg")
-
-        mNames.add("Testowy produkt 3")
-        mDescs.add("Przykładowy opis 3")
-        mPrices.add(75.0)
-        mIcons.add("https://proline.pl/pic/bg021_0.jpg")*/
     }
 
     override fun onResume() {
@@ -70,10 +63,10 @@ class ProductListActivity : AppCompatActivity() {
 
         //pobranie informacji o komponencie, ktory chcemy wyswietlic
         val getextra=intent.extras
-        KOMPONENT=getextra.getString("ComponentName")
-        Toast.makeText(this,KOMPONENT,Toast.LENGTH_SHORT).show()
-        //TODO: Dodanie produktów z firebase
+        KOMPONENT = getextra.getString("ComponentName")
+        //Toast.makeText(this,KOMPONENT,Toast.LENGTH_SHORT).show()
         initProducts()
+        initCart()
     }
 
     fun initRecyclerView() {
@@ -83,7 +76,6 @@ class ProductListActivity : AppCompatActivity() {
         mRecyclerView.setLayoutManager(layoutManager)
 
         //Tutaj tworzymy adapter i podłączamy pod listę
-        //TODO zmiana argumentów RecyclerViewAdapter na obiekt który sobie zrzutujemy z bazy
         mAdapter = RecyclerViewAdapter(this, mNames, mDescs, mPrices, mIcons)
         mRecyclerView.setAdapter(mAdapter)
     }
@@ -115,8 +107,37 @@ class ProductListActivity : AppCompatActivity() {
         }
     }
 
+    private fun initCart(){
+        val userID = readID(filename)
+        database.child("users").child(userID).child("Koszyk").addListenerForSingleValueEvent(object :ValueEventListener{
+
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    koszykTest = dataSnapshot.getValue(KoszykTest::class.java)
+                    if(koszykTest?.Dysk_SSD!=null){
+                        //Toast.makeText(this@ProductListActivity, koszykTest?.Dysk_SSD!!.toString(),Toast.LENGTH_SHORT).show()
+                        //uncheckIDs(koszykTest?.Dysk_SSD!!)
+                    }
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                Snackbar.make(scrollview, databaseError.toException().toString(), Snackbar.LENGTH_SHORT)
+                    .setAction("Action", null)
+                    .show()
+            }
+        })
+    }
+
+    fun writeToCart(id: Int){
+        val userID = readID(filename)
+        database.child("users").child(userID).child("Koszyk").child(KOMPONENT).setValue(id)
+    }
+
     private fun initProducts(){
-        database.child("Podzespoly").child(this.KOMPONENT).addListenerForSingleValueEvent(object : ValueEventListener {
+        clearAllProductsArrays()
+        database.child("Podzespoly").child(this.KOMPONENT).addListenerForSingleValueEvent(object :
+            ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
                 clearAllProductsArrays()
@@ -239,5 +260,31 @@ class ProductListActivity : AppCompatActivity() {
         procesorArray.clear()
         ramArray.clear()
         zasilaczArray.clear()
+
+        mNames.clear()
+        mDescs.clear()
+        mIcons.clear()
+        mPrices.clear()
+    }
+
+    fun readID(filename: String):String{
+        //czyta ID
+        try {
+            val file = InputStreamReader(openFileInput(filename))
+            val br = BufferedReader(file)
+            var line = br.readLine()
+            val all = StringBuilder()
+            while (line != null) {
+                all.append(line)
+                line = br.readLine()
+            }
+            br.close()
+            file.close()
+            return all.toString()
+            //tvID.text=all
+        }
+        catch (e: IOException) {
+        }
+        return ""
     }
 }

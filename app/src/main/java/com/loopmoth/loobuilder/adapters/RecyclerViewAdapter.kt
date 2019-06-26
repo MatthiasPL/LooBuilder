@@ -70,7 +70,7 @@ class RecyclerViewAdapter(private val mContext: Context, names: ArrayList<String
 
         //przy zaznaczeniu przycisku wywoływana jest funckja uncheckIDs z aktywności, która odznacza wszystkie elementy
         // poza wybranym
-        //TODO: w przypadku wybierania niektórych komponentów do kompuetra, będzie się dało wybrać większą
+
         // ilość produktu
         holder.bCheck.setOnClickListener {view ->
             mChecks[position] = ! mChecks[position]
@@ -82,12 +82,14 @@ class RecyclerViewAdapter(private val mContext: Context, names: ArrayList<String
             val ma = getMainActivity(mContext)
             if(ma!=null){
                 ma.uncheckIDs(position)
+                ma.writeToCart(position)
             }
             else{
                 Toast.makeText(mContext, "Błąd. Nie odnaleziono widoku nadrzędnego (ProductListActivity).", Toast.LENGTH_SHORT).show()
             }
 
             //zmiana tekstu przycisków
+            //TODO: zmiana w bazie ID
             if(mChecks[position]){
                 //wybrany przycisk ma poniższy tekst
                 holder.bCheck.setText("ODZNACZ")
