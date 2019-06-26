@@ -107,6 +107,27 @@ class ProductListActivity : AppCompatActivity() {
         }
     }
 
+    fun perfornClickInHolder(position: Int){
+        //index do przechodzenia przez holder trzymający komponenty
+        var i = 0
+
+        //ilość elementów w tym kontenerze
+        val size = mRecyclerView.getChildCount()
+
+        while (i < size) {
+            val holder = mRecyclerView.getChildViewHolder(mRecyclerView.getChildAt(i))
+            if (holder != null) {
+
+                //kliknięcie wybranego przycisku
+                if(i==position){
+                    holder.itemView.bCheck.performClick()
+                    break
+                }
+            }
+            i++
+        }
+    }
+
     private fun initCart(){
         val userID = readID(filename)
         database.child("users").child(userID).child("Koszyk").addListenerForSingleValueEvent(object :ValueEventListener{
@@ -114,9 +135,29 @@ class ProductListActivity : AppCompatActivity() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()) {
                     koszykTest = dataSnapshot.getValue(KoszykTest::class.java)
-                    if(koszykTest?.Dysk_SSD!=null){
-                        //Toast.makeText(this@ProductListActivity, koszykTest?.Dysk_SSD!!.toString(),Toast.LENGTH_SHORT).show()
-                        //uncheckIDs(koszykTest?.Dysk_SSD!!)
+                    if(koszykTest?.Dysk_HDD!=null && KOMPONENT == "Dysk_HDD"){
+                        perfornClickInHolder(koszykTest?.Dysk_HDD!!)
+                    }
+                    if(koszykTest?.Dysk_SSD!=null && KOMPONENT == "Dysk_SSD"){
+                        perfornClickInHolder(koszykTest?.Dysk_SSD!!)
+                    }
+                    if(koszykTest?.Karta_graficzna!=null && KOMPONENT == "Karta_graficzna"){
+                        perfornClickInHolder(koszykTest?.Karta_graficzna!!)
+                    }
+                    if(koszykTest?.Plyta_glowna!=null && KOMPONENT == "Plyta_glowna"){
+                        perfornClickInHolder(koszykTest?.Plyta_glowna!!)
+                    }
+                    if(koszykTest?.Obudowa!=null && KOMPONENT == "Obudowa"){
+                        perfornClickInHolder(koszykTest?.Obudowa!!)
+                    }
+                    if(koszykTest?.Procesor!=null && KOMPONENT == "Procesor"){
+                        perfornClickInHolder(koszykTest?.Procesor!!)
+                    }
+                    if(koszykTest?.RAM!=null && KOMPONENT == "RAM"){
+                        perfornClickInHolder(koszykTest?.RAM!!)
+                    }
+                    if(koszykTest?.Zasilacz!=null && KOMPONENT == "Zasilacz"){
+                        perfornClickInHolder(koszykTest?.Zasilacz!!)
                     }
                 }
             }

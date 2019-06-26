@@ -46,6 +46,16 @@ class Cart : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         initRecyclerView()
+
+        bClear.setOnClickListener {
+            clearAllProductsArrays()
+
+            val userID = readID(filename)
+            database.child("users").child(userID).child("Koszyk").setValue(null)
+
+            initRecyclerView()
+            sumAll()
+        }
     }
 
     private fun initRecyclerView() {
