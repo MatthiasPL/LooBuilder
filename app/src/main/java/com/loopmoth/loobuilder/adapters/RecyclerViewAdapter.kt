@@ -110,6 +110,10 @@ class RecyclerViewAdapter(private val mContext: Context, names: ArrayList<String
                 else{
                     Toast.makeText(mContext, "Błąd. Nie odnaleziono widoku nadrzędnego (ProductListActivity).", Toast.LENGTH_SHORT).show()
                 }
+
+                Snackbar.make(view, mNames[position]+ " usunięto z koszyka", Snackbar.LENGTH_SHORT)
+                    .setAction("Action", null)
+                    .show()
             }
         }
 
