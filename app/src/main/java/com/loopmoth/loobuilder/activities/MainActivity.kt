@@ -38,9 +38,14 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
 
         fabCart.setOnClickListener { view ->
-            Snackbar.make(view, "Cart", Snackbar.LENGTH_SHORT)
+            /*Snackbar.make(view, "Cart", Snackbar.LENGTH_SHORT)
                 .setAction("Action", null)
-                .show()
+                .show()*/
+            val intent = Intent(this, Cart::class.java)
+            // To pass any data to next activity
+            //intent.putExtra("keyIdentifier", value)
+            // start your next activity
+            startActivity(intent)
         }
 
         fabInfo.setOnClickListener{
