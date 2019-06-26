@@ -149,7 +149,7 @@ class ProductListActivity : AppCompatActivity() {
                         }
                         hddArray.forEach {
                             mNames.add(it.nazwa)
-                            mDescs.add(it.interfejs)
+                            mDescs.add("Producent: "+it.producent+"\nInterfejs: "+it.interfejs+"\nPojemność: "+it.pojemnosc_GB+" GB\nFormat dysku: "+it.format_dysku_cale+" \"\nDługość: "+it.dlugosc_mm+" mm\nGrubość: "+it.grubosc_mm+" mm\nSzerokość: "+it.szerokosc_mm+" mm\nWaga: "+it.waga_g+"g")
                             mPrices.add(it.cena)
                             mIcons.add(it.img)
                         }
@@ -161,7 +161,7 @@ class ProductListActivity : AppCompatActivity() {
                         }
                         ssdArray.forEach {
                             mNames.add(it.nazwa)
-                            mDescs.add(it.interfejs)
+                            mDescs.add("Producent: "+it.producent+"\nInterfejs: "+it.interfejs+"\nPojemność: "+it.pojemnosc_GB+" GB\nFormat dysku: "+it.Format_dysku_cale+"\"\nGrubość: "+it.grubosc_mm+" mm\nSzybkość odczytu: "+it.szybkosc_odczytu_MB_s+" MB/s\nSzybkość zapisu: "+it.szybkosc_zapisu_MB_s+" MB/s")
                             mPrices.add(it.cena)
                             mIcons.add(it.img)
                         }
@@ -173,7 +173,7 @@ class ProductListActivity : AppCompatActivity() {
                         }
                         karta_graficznaArray.forEach {
                             mNames.add(it.nazwa)
-                            mDescs.add(it.typ_zlacza)
+                            mDescs.add("Producent: "+it.producent+"\nProducent chipsetu: "+it.producent_chipsetu+"\nRodzaj chipsetu: "+it.rodzaj_chipsetu+"\nDługość: "+it.dlugosc_mm+" mm\nRodzaj pamięci RAM: "+it.rodzaj_pamieci_RAM+"\nIlość pamięci RAM: "+it.ilosc_pamieci_RAM_GB+" GB\nTyp chłodzenia: "+it.typ_chlodzenia+"Typ złącza: "+it.typ_zlacza+"Złącza: "+it.zlacza)
                             mPrices.add(it.cena)
                             mIcons.add(it.img)
                         }
@@ -185,7 +185,7 @@ class ProductListActivity : AppCompatActivity() {
                         }
                         motherboardArray.forEach {
                             mNames.add(it.nazwa)
-                            mDescs.add(it.chipset)
+                            mDescs.add("Producent: "+it.producent+"\nChipset: "+it.chipset+"\nStandard: "+it.standard+"\nStandard pamięci: "+it.standard_pamieci+"\nSloty pamięci: "+it.sloty_pamieci+"\nGniazdo procesora: "+it.gniazdo_procesora+"\nIlość procesorów: "+it.ilosc_procesorow+"\nChipset graficzny: "+it.chipset_graficzny+"\nGłębokość: "+it.glebokosc+" mm\nSzerokość: "+it.szerokosc+" mm\nGniazda rozszerzeń: "+it.gniazda_rozszerzen)
                             mPrices.add(it.cena)
                             mIcons.add(it.img)
                         }
@@ -197,7 +197,7 @@ class ProductListActivity : AppCompatActivity() {
                         }
                         obudowaArray.forEach {
                             mNames.add(it.nazwa)
-                            mDescs.add(it.typ_obudowy)
+                            mDescs.add("Producent: "+it.producent+"\nTyp obudowy: "+it.typ_obudowy+"\nKolor: "+it.kolor+"\nSzerokość: "+it.szerokosc_cm+" cm\nWysokoć: "+it.wysokosc_cm+" cm\nGłębokość: "+it.glebokosc_cm+" cm\nWaga: "+it.waga_kg+" kg\nKompatybilność: "+it.kompatybilnosc)
                             mPrices.add(it.cena)
                             mIcons.add(it.img)
                         }
@@ -209,7 +209,7 @@ class ProductListActivity : AppCompatActivity() {
                         }
                         procesorArray.forEach {
                             mNames.add(it.nazwa)
-                            mDescs.add(it.typ_gniazda)
+                            mDescs.add("Producent: "+it.producent+"\nLinia: "+it.linia+"\nTyp gniazda: "+it.typ_gniazda+"\nTaktowanie: "+it.taktowanie+" GHz\nLiczba rdzeni: "+it.liczba_rdzeni+"\nIlość wątków: "+it.ilosc_watkow+"\nUkład graficzny: "+it.uklad_graficzny)
                             mPrices.add(it.cena)
                             mIcons.add(it.img)
                         }
@@ -221,7 +221,7 @@ class ProductListActivity : AppCompatActivity() {
                         }
                         ramArray.forEach {
                             mNames.add(it.nazwa)
-                            mDescs.add(it.typ_pamieci)
+                            mDescs.add("Producent: "+it.producent+"\nTyp pamięci: "+it.typ_pamieci+"\nPojemność: "+it.pojemnosc_GB+" GB\nLiczba modułów: "+it.liczba_modulow+"\nCzęstotliwość pracy: "+it.czestotliwosc_pracy_MHz+" MHz")
                             mPrices.add(it.cena)
                             mIcons.add(it.img)
                         }
@@ -233,7 +233,7 @@ class ProductListActivity : AppCompatActivity() {
                         }
                         zasilaczArray.forEach {
                             mNames.add(it.nazwa)
-                            mDescs.add(it.standard)
+                            mDescs.add("Producent: "+it.producent+"\nStandard: "+it.standard+"\nMoc: "+it.moc_W+" W\nSzerokość: "+it.szerokosc_mm+" mm\nWysokość: "+it.wysokosc_mm+" mm\nGłębokość: "+it.glebokosc_mm+" mm\nZłącza: "+it.zlacza)
                             mPrices.add(it.cena)
                             mIcons.add(it.img)
                         }
