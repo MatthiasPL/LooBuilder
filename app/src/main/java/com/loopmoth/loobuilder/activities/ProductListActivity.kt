@@ -170,6 +170,11 @@ class ProductListActivity : AppCompatActivity() {
         })
     }
 
+    fun removeFromCart(id: Int){
+        val userID = readID(filename)
+        database.child("users").child(userID).child("Koszyk").child(KOMPONENT).setValue(null)
+    }
+
     fun writeToCart(id: Int){
         val userID = readID(filename)
         database.child("users").child(userID).child("Koszyk").child(KOMPONENT).setValue(id)

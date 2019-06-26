@@ -103,6 +103,13 @@ class RecyclerViewAdapter(private val mContext: Context, names: ArrayList<String
             else{
                 holder.bCheck.setText("WYBIERZ")
                 holder.bCheck.setBackgroundColor(Color.BLACK)
+                val ma = getMainActivity(mContext)
+                if(ma!=null){
+                    ma.removeFromCart(position)
+                }
+                else{
+                    Toast.makeText(mContext, "Błąd. Nie odnaleziono widoku nadrzędnego (ProductListActivity).", Toast.LENGTH_SHORT).show()
+                }
             }
         }
 
