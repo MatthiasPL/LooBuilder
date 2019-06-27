@@ -36,8 +36,8 @@ class CheckerActivity : AppCompatActivity() {
     private var RAM_typ_pamieci: String?=null
     private var mObudowa: Obudowa?=null
     private var Zasilacz_standard: String?=null
-    private var GniazdoRozszerzenNazwy: MutableList<String>?=null
-    private var KompatybilnoscNazwy: MutableList<String>?=null
+    private lateinit var GniazdoRozszerzenNazwy: MutableList<String>
+    private lateinit var KompatybilnoscNazwy: MutableList<String>
     private var CompatibilityList= mutableListOf(CompatibilityOfElements.ABSENT,CompatibilityOfElements.ABSENT,CompatibilityOfElements.ABSENT,CompatibilityOfElements.ABSENT)
     // 0 procesor-plytaglowna , 1 ram-plytaglowna, 2 kartagraf-plytaglowna, 3 obudowa-zasilacz
 
@@ -91,6 +91,7 @@ class CheckerActivity : AppCompatActivity() {
                     koszykTest = dataSnapshot.getValue(KoszykTest::class.java)
                     if(koszykTest?.Dysk_HDD!=null) {
                         initData("Dysk_HDD", koszykTest?.Dysk_HDD!!)
+                        //Toast.makeText(this@CheckerActivity, koszykTest?.Dysk_HDD.toString(),Toast.LENGTH_SHORT).show()
                     }
                     if(koszykTest?.Dysk_SSD!=null) {
                         initData("Dysk_SSD", koszykTest?.Dysk_SSD!!)
@@ -99,6 +100,7 @@ class CheckerActivity : AppCompatActivity() {
                         initData("Plyta_glowna", koszykTest?.Plyta_glowna!!)
                         if (koszykTest?.Karta_graficzna != null) {
                             initData("Karta_graficzna", koszykTest?.Karta_graficzna!!)
+                            //Toast.makeText(this@CheckerActivity, koszykTest?.Karta_graficzna.toString(),Toast.LENGTH_SHORT).show()
                         }
                         if (koszykTest?.Procesor != null) {
                             initData("Procesor", koszykTest?.Procesor!!)
@@ -139,6 +141,7 @@ class CheckerActivity : AppCompatActivity() {
                         }
                         "Karta_graficzna" ->{
                             Karta_graficzna_typ_zlacza=dataSnapshot.child("typ_zlacza").getValue(String::class.java)!!
+                            //Toast.makeText(this@CheckerActivity, Karta_graficzna_typ_zlacza,Toast.LENGTH_SHORT).show()
                         }
                         "Plyta_glowna" ->{
                             //Motherboard_gniazda_rozszerzen=dataSnapshot.child("gniazda_rozszerzen").getValue(List<GniazdoRozszerzen>)
@@ -147,12 +150,15 @@ class CheckerActivity : AppCompatActivity() {
                         }
                         "Procesor" -> {
                             Procesor_typ_gniazda=dataSnapshot.child("typ_gniazda").getValue(String::class.java)
+                            //Toast.makeText(this@CheckerActivity, Procesor_typ_gniazda,Toast.LENGTH_SHORT).show()
                         }
                         "RAM" -> {
                             RAM_typ_pamieci=dataSnapshot.child("typ_pamieci").getValue(String::class.java)
+                            //Toast.makeText(this@CheckerActivity, RAM_typ_pamieci,Toast.LENGTH_SHORT).show()
                         }
                         "Obudowa" -> {
                             mObudowa=dataSnapshot.getValue(Obudowa::class.java)
+                            //Toast.makeText(this@CheckerActivity, mObudowa!!.kompatybilnosc[0].nazwa,Toast.LENGTH_SHORT).show()
                         }
                         "Zasilacz" -> {
                             Zasilacz_standard=dataSnapshot.child("standard").getValue(String::class.java)
@@ -183,10 +189,10 @@ class CheckerActivity : AppCompatActivity() {
         if(mMotherboard!=null){
             if(Procesor_typ_gniazda!=null) {
                 CompatibilityList[0]=IsSameInfo(Procesor_typ_gniazda!!, mMotherboard!!.gniazdo_procesora)
-                Toast.makeText(this, Procesor_typ_gniazda, Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this, Procesor_typ_gniazda, Toast.LENGTH_SHORT).show()
             }
             if(RAM_typ_pamieci!=null){
-                Toast.makeText(this, RAM_typ_pamieci, Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this, RAM_typ_pamieci, Toast.LENGTH_SHORT).show()
                 CompatibilityList[1]=IsSameInfo(RAM_typ_pamieci!!, mMotherboard!!.standard_pamieci)
             }
             if(Karta_graficzna_typ_zlacza!=null){
@@ -276,9 +282,10 @@ class CheckerActivity : AppCompatActivity() {
             CompatibilityOfElements.NOT_COMPATIBLE -> {
                 GraficznaIV.setBackgroundResource(android.R.color.holo_red_light)
                 GraficznaIV.setOnClickListener {
+                    GniazdoRozszerzenNazwy= mutableListOf()
                     for(x in mMotherboard!!.gniazda_rozszerzen)
-                        GniazdoRozszerzenNazwy!!.add(x.nazwa)
-                    SetErrorText("Karta graficzna", "Płyta główna", Karta_graficzna_typ_zlacza!!, GniazdoRozszerzenNazwy!!.toList())
+                        GniazdoRozszerzenNazwy.add(x.nazwa)
+                    SetErrorText("Karta graficzna", "Płyta główna", Karta_graficzna_typ_zlacza!!, GniazdoRozszerzenNazwy.toList())
                 }
             }
             else -> {
@@ -294,9 +301,13 @@ class CheckerActivity : AppCompatActivity() {
                 ObudowaIV.setBackgroundResource(android.R.color.holo_red_dark)
                 ZasilaczIV.setBackgroundResource(android.R.color.holo_red_light)
                 ZasilaczIV.setOnClickListener {
-                    for(x in  mObudowa!!.kompatybilnosc)
-                        KompatybilnoscNazwy!!.add(x.nazwa)
-                    SetErrorText("Zasilacz", "Obudowa", Zasilacz_standard!!, KompatybilnoscNazwy!!)
+                    KompatybilnoscNazwy= mutableListOf()
+                    for(x in  mObudowa!!.kompatybilnosc) {
+                        KompatybilnoscNazwy.add(x.nazwa)
+                        //Toast.makeText(this, x.nazwa, Toast.LENGTH_SHORT).show()
+                    }
+                    //Toast.makeText(this, KompatybilnoscNazwy[0], Toast.LENGTH_SHORT).show()
+                    SetErrorText("Zasilacz", "Obudowa", Zasilacz_standard!!, KompatybilnoscNazwy.toList())
                 }
             }
             else -> {

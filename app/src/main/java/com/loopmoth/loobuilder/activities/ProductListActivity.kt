@@ -119,7 +119,7 @@ class ProductListActivity : AppCompatActivity() {
             if (holder != null) {
 
                 //kliknięcie wybranego przycisku
-                if(i==position){
+                if(i==position && holder.itemView.bCheck.text=="WYBIERZ"){
                     holder.itemView.bCheck.performClick()
                     break
                 }
@@ -219,7 +219,12 @@ class ProductListActivity : AppCompatActivity() {
                         }
                         karta_graficznaArray.forEach {
                             mNames.add(it.nazwa)
-                            mDescs.add("Producent: "+it.producent+"\nProducent chipsetu: "+it.producent_chipsetu+"\nRodzaj chipsetu: "+it.rodzaj_chipsetu+"\nDługość: "+it.dlugosc_mm+" mm\nRodzaj pamięci RAM: "+it.rodzaj_pamieci_RAM+"\nIlość pamięci RAM: "+it.ilosc_pamieci_RAM_GB+" GB\nTyp chłodzenia: "+it.typ_chlodzenia+"Typ złącza: "+it.typ_zlacza+"Złącza: "+it.zlacza)
+                            var gnrozsz="\n"
+                            for(i in it.zlacza){
+                                gnrozsz+=i.nazwa
+                                gnrozsz+="\n"
+                            }
+                            mDescs.add("Producent: "+it.producent+"\nProducent chipsetu: "+it.producent_chipsetu+"\nRodzaj chipsetu: "+it.rodzaj_chipsetu+"\nDługość: "+it.dlugosc_mm+" mm\nRodzaj pamięci RAM: "+it.rodzaj_pamieci_RAM+"\nIlość pamięci RAM: "+it.ilosc_pamieci_RAM_GB+" GB\nTyp chłodzenia: "+it.typ_chlodzenia+"\nTyp złącza: "+it.typ_zlacza+"\nZłącza: "+gnrozsz)
                             mPrices.add(it.cena)
                             mIcons.add(it.img)
                         }
@@ -231,7 +236,12 @@ class ProductListActivity : AppCompatActivity() {
                         }
                         motherboardArray.forEach {
                             mNames.add(it.nazwa)
-                            mDescs.add("Producent: "+it.producent+"\nChipset: "+it.chipset+"\nStandard: "+it.standard+"\nStandard pamięci: "+it.standard_pamieci+"\nSloty pamięci: "+it.sloty_pamieci+"\nGniazdo procesora: "+it.gniazdo_procesora+"\nIlość procesorów: "+it.ilosc_procesorow+"\nChipset graficzny: "+it.chipset_graficzny+"\nGłębokość: "+it.glebokosc+" mm\nSzerokość: "+it.szerokosc+" mm\nGniazda rozszerzeń: "+it.gniazda_rozszerzen)
+                            var gnrozsz="\n"
+                            for(i in it.gniazda_rozszerzen){
+                                gnrozsz+=i.nazwa
+                                gnrozsz+="\n"
+                            }
+                            mDescs.add("Producent: "+it.producent+"\nChipset: "+it.chipset+"\nStandard: "+it.standard+"\nStandard pamięci: "+it.standard_pamieci+"\nSloty pamięci: "+it.sloty_pamieci+"\nGniazdo procesora: "+it.gniazdo_procesora+"\nIlość procesorów: "+it.ilosc_procesorow+"\nChipset graficzny: "+it.chipset_graficzny+"\nGłębokość: "+it.glebokosc+" mm\nSzerokość: "+it.szerokosc+" mm\nGniazda rozszerzeń: "+gnrozsz)
                             mPrices.add(it.cena)
                             mIcons.add(it.img)
                         }
@@ -243,7 +253,12 @@ class ProductListActivity : AppCompatActivity() {
                         }
                         obudowaArray.forEach {
                             mNames.add(it.nazwa)
-                            mDescs.add("Producent: "+it.producent+"\nTyp obudowy: "+it.typ_obudowy+"\nKolor: "+it.kolor+"\nSzerokość: "+it.szerokosc_cm+" cm\nWysokoć: "+it.wysokosc_cm+" cm\nGłębokość: "+it.glebokosc_cm+" cm\nWaga: "+it.waga_kg+" kg\nKompatybilność: "+it.kompatybilnosc)
+                            var kompat="\n"
+                            for(i in it.kompatybilnosc){
+                                kompat+=i.nazwa
+                                kompat+="\n"
+                            }
+                            mDescs.add("Producent: "+it.producent+"\nTyp obudowy: "+it.typ_obudowy+"\nKolor: "+it.kolor+"\nSzerokość: "+it.szerokosc_cm+" cm\nWysokoć: "+it.wysokosc_cm+" cm\nGłębokość: "+it.glebokosc_cm+" cm\nWaga: "+it.waga_kg+" kg\nKompatybilność: "+kompat)
                             mPrices.add(it.cena)
                             mIcons.add(it.img)
                         }
@@ -279,7 +294,12 @@ class ProductListActivity : AppCompatActivity() {
                         }
                         zasilaczArray.forEach {
                             mNames.add(it.nazwa)
-                            mDescs.add("Producent: "+it.producent+"\nStandard: "+it.standard+"\nMoc: "+it.moc_W+" W\nSzerokość: "+it.szerokosc_mm+" mm\nWysokość: "+it.wysokosc_mm+" mm\nGłębokość: "+it.glebokosc_mm+" mm\nZłącza: "+it.zlacza)
+                            var gnrozsz="\n"
+                            for(i in it.zlacza){
+                                gnrozsz+=i.nazwa
+                                gnrozsz+="\n"
+                            }
+                            mDescs.add("Producent: "+it.producent+"\nStandard: "+it.standard+"\nMoc: "+it.moc_W+" W\nSzerokość: "+it.szerokosc_mm+" mm\nWysokość: "+it.wysokosc_mm+" mm\nGłębokość: "+it.glebokosc_mm+" mm\nZłącza: "+gnrozsz)
                             mPrices.add(it.cena)
                             mIcons.add(it.img)
                         }
