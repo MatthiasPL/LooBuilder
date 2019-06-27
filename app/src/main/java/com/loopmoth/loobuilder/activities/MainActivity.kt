@@ -103,8 +103,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initMenuList(){
-
-        //TODO: oprogramowanie przycisków
         cardObudowa.setOnClickListener{
             val intent = Intent(this, ProductListActivity::class.java)
             // To pass any data to next activity
@@ -247,30 +245,63 @@ class MainActivity : AppCompatActivity() {
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()) {
+
                     koszykTest = dataSnapshot.getValue(KoszykTest::class.java)
+
                     if(koszykTest?.Dysk_SSD!=null){
                         ivSSD.visibility = View.VISIBLE
                     }
+                    else{
+                        ivSSD.visibility = View.INVISIBLE
+                    }
+
                     if(koszykTest?.Dysk_HDD!=null){
                         ivHDD.visibility = View.VISIBLE
                     }
+                    else{
+                        ivHDD.visibility = View.INVISIBLE
+                    }
+
                     if(koszykTest?.Karta_graficzna!=null){
                         ivKartaGraficzna.visibility = View.VISIBLE
                     }
+                    else{
+                        ivKartaGraficzna.visibility = View.INVISIBLE
+                    }
+
                     if(koszykTest?.Plyta_glowna!=null){
                         ivMotherboard.visibility = View.VISIBLE
                     }
+                    else{
+                        ivMotherboard.visibility = View.INVISIBLE
+                    }
+
                     if(koszykTest?.Obudowa!=null){
                         ivObudowa.visibility = View.VISIBLE
                     }
+                    else{
+                        ivObudowa.visibility = View.INVISIBLE
+                    }
+
                     if(koszykTest?.Procesor!=null){
                         ivProcesor.visibility = View.VISIBLE
                     }
+                    else{
+                        ivProcesor.visibility = View.INVISIBLE
+                    }
+
                     if(koszykTest?.RAM!=null){
                         ivRAM.visibility = View.VISIBLE
                     }
+                    else{
+                        ivRAM.visibility = View.INVISIBLE
+                    }
+
                     if(koszykTest?.Zasilacz!=null){
                         ivZasilacz.visibility = View.VISIBLE
+                    }
+                    else{
+                        ivZasilacz.visibility = View.INVISIBLE
                     }
                 }
             }
