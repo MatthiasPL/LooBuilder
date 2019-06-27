@@ -158,7 +158,8 @@ class CheckerActivity : AppCompatActivity() {
                             Zasilacz_standard=dataSnapshot.child("standard").getValue(String::class.java)
                         }
                     }
-
+                    CheckCompatibility()
+                    SetColorsAndErrors(CompatibilityList)
                     //Toast.makeText(this@CheckerActivity, "Działa w add_component" + Karta_graficzna_typ_zlacza, Toast.LENGTH_SHORT).show()
                     /*mNames.add(dataSnapshot.child("nazwa").getValue(String::class.java)!!)
                     mIcons.add(dataSnapshot.child("img").getValue(String::class.java)!!)
