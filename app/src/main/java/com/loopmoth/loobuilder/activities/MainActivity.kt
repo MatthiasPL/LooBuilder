@@ -16,10 +16,13 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import android.app.Activity
 import android.graphics.Color
+import android.opengl.Visibility
 import com.google.firebase.FirebaseApp
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
+import com.loopmoth.loobuilder.classes.KoszykTest
 import com.loopmoth.loobuilder.classes.User
 import com.loopmoth.loobuilder.interfaces.ComputerPart
+import kotlinx.android.synthetic.main.activity_product_list.*
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
@@ -27,11 +30,21 @@ import java.io.OutputStreamWriter
 
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var database: DatabaseReference
+    private var koszykTest: KoszykTest? = null
+
+    val filename = "userID.conf"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
+
+        hideIcons()
+
         FirebaseApp.initializeApp(this)
+        database = FirebaseDatabase.getInstance().reference
     }
 
     override fun onResume() {
@@ -66,6 +79,8 @@ class MainActivity : AppCompatActivity() {
         initMenuList()
 
         readUserID()
+
+        initCart()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -185,7 +200,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun readID(filename: String){
+    /*fun readID(filename: String){
         //czyta ID
         try {
             val file = InputStreamReader(openFileInput(filename))
@@ -202,5 +217,80 @@ class MainActivity : AppCompatActivity() {
         }
         catch (e: IOException) {
         }
+    }*/
+
+    fun readID(filename: String):String{
+        //czyta ID
+        try {
+            val file = InputStreamReader(openFileInput(filename))
+            val br = BufferedReader(file)
+            var line = br.readLine()
+            val all = StringBuilder()
+            while (line != null) {
+                all.append(line)
+                line = br.readLine()
+            }
+            br.close()
+            file.close()
+            return all.toString()
+            //tvID.text=all
+        }
+        catch (e: IOException) {
+        }
+        return ""
+    }
+
+    private fun initCart(){
+        val userID = readID(filename)
+        database.child("users").child(userID).child("Koszyk").addListenerForSingleValueEvent(object :
+            ValueEventListener {
+
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    koszykTest = dataSnapshot.getValue(KoszykTest::class.java)
+                    if(koszykTest?.Dysk_SSD!=null){
+                        ivSSD.visibility = View.VISIBLE
+                    }
+                    if(koszykTest?.Dysk_HDD!=null){
+                        ivHDD.visibility = View.VISIBLE
+                    }
+                    if(koszykTest?.Karta_graficzna!=null){
+                        ivKartaGraficzna.visibility = View.VISIBLE
+                    }
+                    if(koszykTest?.Plyta_glowna!=null){
+                        ivMotherboard.visibility = View.VISIBLE
+                    }
+                    if(koszykTest?.Obudowa!=null){
+                        ivObudowa.visibility = View.VISIBLE
+                    }
+                    if(koszykTest?.Procesor!=null){
+                        ivProcesor.visibility = View.VISIBLE
+                    }
+                    if(koszykTest?.RAM!=null){
+                        ivRAM.visibility = View.VISIBLE
+                    }
+                    if(koszykTest?.Zasilacz!=null){
+                        ivZasilacz.visibility = View.VISIBLE
+                    }
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                Snackbar.make(scrollview, databaseError.toException().toString(), Snackbar.LENGTH_SHORT)
+                    .setAction("Action", null)
+                    .show()
+            }
+        })
+    }
+
+    private fun hideIcons(){
+        ivHDD.visibility = View.INVISIBLE
+        ivSSD.visibility = View.INVISIBLE
+        ivKartaGraficzna.visibility = View.INVISIBLE
+        ivMotherboard.visibility = View.INVISIBLE
+        ivObudowa.visibility = View.INVISIBLE
+        ivProcesor.visibility = View.INVISIBLE
+        ivRAM.visibility = View.INVISIBLE
+        ivZasilacz.visibility = View.INVISIBLE
     }
 }

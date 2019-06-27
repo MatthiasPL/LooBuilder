@@ -56,6 +56,15 @@
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
                                 app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="32dp"/>
+                        <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:srcCompat="@drawable/ic_shopping_basket_configuration_outline_interface_symbol_in_a_circle"
+                                android:id="@+id/ivObudowa"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                android:layout_marginBottom="8dp" android:layout_marginTop="8dp"
+                                app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                                android:layout_marginEnd="52dp" android:scaleX="1.2" android:scaleY="1.2"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.cardview.widget.CardView>
                 <androidx.cardview.widget.CardView
@@ -70,6 +79,15 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent" android:id="@+id/LLProcesor">
+                        <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:srcCompat="@drawable/ic_shopping_basket_configuration_outline_interface_symbol_in_a_circle"
+                                android:id="@+id/ivProcesor"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                android:layout_marginBottom="8dp" android:layout_marginTop="8dp"
+                                app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                                android:layout_marginEnd="52dp" android:scaleX="1.2" android:scaleY="1.2"/>
                         <TextView
                                 android:text="Procesor"
                                 android:layout_width="wrap_content"
@@ -100,6 +118,15 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent" android:id="@+id/LLPlytaGlowna">
+                        <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:srcCompat="@drawable/ic_shopping_basket_configuration_outline_interface_symbol_in_a_circle"
+                                android:id="@+id/ivMotherboard"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                android:layout_marginBottom="8dp" android:layout_marginTop="8dp"
+                                app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                                android:layout_marginEnd="52dp" android:scaleX="1.2" android:scaleY="1.2"/>
                         <TextView
                                 android:text="Płyta główna"
                                 android:layout_width="wrap_content"
@@ -130,6 +157,15 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent" android:id="@+id/LLRAM">
+                        <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:srcCompat="@drawable/ic_shopping_basket_configuration_outline_interface_symbol_in_a_circle"
+                                android:id="@+id/ivRAM"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                android:layout_marginBottom="8dp" android:layout_marginTop="8dp"
+                                app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                                android:layout_marginEnd="52dp" android:scaleX="1.2" android:scaleY="1.2"/>
                         <TextView
                                 android:text="Pamięć RAM"
                                 android:layout_width="wrap_content"
@@ -160,6 +196,15 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent" android:id="@+id/LLKartaGraficzna">
+                        <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:srcCompat="@drawable/ic_shopping_basket_configuration_outline_interface_symbol_in_a_circle"
+                                android:id="@+id/ivKartaGraficzna"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                android:layout_marginBottom="8dp" android:layout_marginTop="8dp"
+                                app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                                android:layout_marginEnd="52dp" android:scaleX="1.2" android:scaleY="1.2"/>
                         <TextView
                                 android:text="Karta graficzna"
                                 android:layout_width="wrap_content"
@@ -191,6 +236,15 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent" android:id="@+id/LLDyskHDD">
+                        <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:srcCompat="@drawable/ic_shopping_basket_configuration_outline_interface_symbol_in_a_circle"
+                                android:id="@+id/ivHDD"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                android:layout_marginBottom="8dp" android:layout_marginTop="8dp"
+                                app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                                android:layout_marginEnd="52dp" android:scaleX="1.2" android:scaleY="1.2"/>
                         <TextView
                                 android:text="Dysk HDD"
                                 android:layout_width="wrap_content"
@@ -199,11 +253,11 @@
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 android:textSize="18sp" android:id="@+id/tvDyskHDD"
                                 android:textColor="@color/design_default_color_on_secondary"
-                                app:layout_constraintStart_toEndOf="@+id/imageView15" android:layout_marginStart="16dp"/>
+                                app:layout_constraintStart_toEndOf="@+id/imageView17" android:layout_marginStart="16dp"/>
                         <ImageView
                                 android:layout_width="48dp"
                                 android:layout_height="48dp" app:srcCompat="@drawable/ic_harddisk"
-                                android:id="@+id/imageView15"
+                                android:id="@+id/imageView17"
                                 app:layout_constraintTop_toTopOf="parent"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="32dp"/>
@@ -221,6 +275,15 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent" android:id="@+id/LLDyskSSD">
+                        <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:srcCompat="@drawable/ic_shopping_basket_configuration_outline_interface_symbol_in_a_circle"
+                                android:id="@+id/ivSSD"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                android:layout_marginBottom="8dp" android:layout_marginTop="8dp"
+                                app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                                android:layout_marginEnd="52dp" android:scaleX="1.2" android:scaleY="1.2"/>
                         <TextView
                                 android:text="Dysk SSD"
                                 android:layout_width="wrap_content"
@@ -229,12 +292,12 @@
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 android:textSize="18sp" android:id="@+id/tvDyskSSD"
                                 android:textColor="@color/design_default_color_on_secondary"
-                                app:layout_constraintStart_toEndOf="@+id/imageView15"
+                                app:layout_constraintStart_toEndOf="@+id/imageView18"
                                 android:layout_marginStart="16dp"/>
                         <ImageView
                                 android:layout_width="48dp"
                                 android:layout_height="48dp" app:srcCompat="@drawable/ic_solid_state_drive"
-                                android:id="@+id/imageView15"
+                                android:id="@+id/imageView18"
                                 app:layout_constraintTop_toTopOf="parent"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="32dp"/>
@@ -252,6 +315,15 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent" android:id="@+id/LLZasilacz">
+                        <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:srcCompat="@drawable/ic_shopping_basket_configuration_outline_interface_symbol_in_a_circle"
+                                android:id="@+id/ivZasilacz"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                android:layout_marginBottom="8dp" android:layout_marginTop="8dp"
+                                app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                                android:layout_marginEnd="52dp" android:scaleX="1.2" android:scaleY="1.2"/>
                         <TextView
                                 android:text="Zasilacz"
                                 android:layout_width="wrap_content"

@@ -89,7 +89,6 @@ class RecyclerViewAdapter(private val mContext: Context, names: ArrayList<String
             }
 
             //zmiana tekstu przycisków
-            //TODO: zmiana w bazie ID
             if(mChecks[position]){
                 //wybrany przycisk ma poniższy tekst
                 holder.bCheck.setText("ODZNACZ")
