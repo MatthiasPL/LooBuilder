@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import android.content.ContextWrapper
+import android.widget.LinearLayout
 import com.loopmoth.loobuilder.activities.ProductListActivity
 import com.loopmoth.loobuilder.R
 
@@ -22,6 +23,7 @@ class CartRecyclerViewAdapter(private val mContext: Context, names: ArrayList<St
     private var mNames = arrayListOf<String>()
     private var mPrice = arrayListOf<Double>()
     private var mIcons = arrayListOf<String>()
+    private var mColors = arrayListOf<Int>()
 
     private var mFirstViewHolderID = 0
     private var mLastViewHolderID = 0

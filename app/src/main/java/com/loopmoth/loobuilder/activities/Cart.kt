@@ -1,6 +1,11 @@
 package com.loopmoth.loobuilder.activities
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
@@ -21,7 +26,7 @@ import java.io.IOException
 import java.io.InputStreamReader
 import java.util.*
 
-class Cart : AppCompatActivity(), TextToSpeech.OnInitListener {
+class Cart : AppCompatActivity(), TextToSpeech.OnInitListener, SensorEventListener {
 
     private lateinit var mRecyclerView: RecyclerView
     private lateinit var mAdapter: CartRecyclerViewAdapter
@@ -40,6 +45,13 @@ class Cart : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     private var text: String = ""
 
+    lateinit var sm: SensorManager
+
+    var acelVal:Float=0F
+    var acelLast:Float=0F
+    var shake:Float=0F
+    var LastSize=20
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cart)
@@ -52,6 +64,38 @@ class Cart : AppCompatActivity(), TextToSpeech.OnInitListener {
         bSpeak.setOnClickListener { speakOut(text) }
 
         initCart()
+
+        sm=getSystemService(Context.SENSOR_SERVICE) as SensorManager
+        sm.registerListener(this@Cart, sm.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);
+
+        acelVal=SensorManager.GRAVITY_EARTH
+        acelLast=SensorManager.GRAVITY_EARTH
+        shake=0.00f
+    }
+
+    override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun onSensorChanged(event: SensorEvent?) {
+        val x = event!!.values[0]
+        val y = event.values[1]
+        val z = event.values[2]
+
+        acelLast=acelVal
+        acelVal= Math.sqrt((x*x+y*y+z*z).toDouble()).toFloat()
+        val delta=acelVal-acelLast
+        shake=shake*0.9F+delta
+
+        if(shake>12)
+        {
+            bClear.performClick()
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        sm.unregisterListener(this)
     }
 
     override fun onResume() {
@@ -72,7 +116,7 @@ class Cart : AppCompatActivity(), TextToSpeech.OnInitListener {
     override fun onInit(status: Int) {
         if (status == TextToSpeech.SUCCESS) {
             // set US English as language for tts
-            val result = tts!!.setLanguage(Locale.US)
+            val result = tts!!.setLanguage(Locale.GERMAN)
 
             if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
                 Log.e("TTS","The Language specified is not supported!")
@@ -197,6 +241,7 @@ class Cart : AppCompatActivity(), TextToSpeech.OnInitListener {
         mNames.clear()
         mIcons.clear()
         mPrices.clear()
+        text = ""
     }
 
     @SuppressLint("SetTextI18n")

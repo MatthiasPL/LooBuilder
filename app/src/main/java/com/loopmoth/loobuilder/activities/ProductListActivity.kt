@@ -119,7 +119,7 @@ class ProductListActivity : AppCompatActivity() {
             if (holder != null) {
 
                 //kliknięcie wybranego przycisku
-                if(i==position && holder.itemView.bCheck.text=="WYBIERZ"){
+                if(i==position){
                     holder.itemView.bCheck.performClick()
                     break
                 }
@@ -234,7 +234,7 @@ class ProductListActivity : AppCompatActivity() {
                         dataSnapshot.children.mapNotNullTo(motherboardArray) {
                             it.getValue<Motherboard>(Motherboard::class.java)
                         }
-                        motherboardArray.forEach {
+                        motherboardArray.toList().forEach {
                             mNames.add(it.nazwa)
                             var gnrozsz="\n"
                             for(i in it.gniazda_rozszerzen){
