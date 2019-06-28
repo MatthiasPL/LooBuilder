@@ -3,6 +3,8 @@ package com.loopmoth.loobuilder.activities
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.speech.tts.TextToSpeech
+import android.util.Log
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,8 +19,9 @@ import kotlinx.android.synthetic.main.activity_product_list.*
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
+import java.util.*
 
-class Cart : AppCompatActivity() {
+class Cart : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     private lateinit var mRecyclerView: RecyclerView
     private lateinit var mAdapter: CartRecyclerViewAdapter
@@ -33,12 +36,20 @@ class Cart : AppCompatActivity() {
 
     val filename = "userID.conf"
 
+    private var tts: TextToSpeech? = null
+
+    private var text: String = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cart)
 
         FirebaseApp.initializeApp(this)
         database = FirebaseDatabase.getInstance().reference
+
+        tts = TextToSpeech(this, this)
+
+        bSpeak.setOnClickListener { speakOut(text) }
 
         initCart()
     }
@@ -55,6 +66,23 @@ class Cart : AppCompatActivity() {
 
             initRecyclerView()
             sumAll()
+        }
+    }
+
+    override fun onInit(status: Int) {
+        if (status == TextToSpeech.SUCCESS) {
+            // set US English as language for tts
+            val result = tts!!.setLanguage(Locale.US)
+
+            if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                Log.e("TTS","The Language specified is not supported!")
+                bSpeak.isEnabled = false
+            } else {
+                bSpeak.isEnabled = true
+            }
+
+        } else {
+            Log.e("TTS", "Initilization Failed!")
         }
     }
 
@@ -126,6 +154,8 @@ class Cart : AppCompatActivity() {
                     mNames.add(dataSnapshot.child("nazwa").getValue(String::class.java)!!)
                     mIcons.add(dataSnapshot.child("img").getValue(String::class.java)!!)
                     mPrices.add(dataSnapshot.child("cena").getValue(Double::class.java)!!)
+
+                    text += type + " " + dataSnapshot.child("nazwa").getValue(String::class.java)!!
                 }
                 else{
                     Toast.makeText(this@Cart, "Zmaściłeś baranie", Toast.LENGTH_SHORT).show()
@@ -178,5 +208,18 @@ class Cart : AppCompatActivity() {
         }
 
         tvSuma.text = "%.2f".format(suma) + " zł"
+    }
+
+    private fun speakOut(text: String) {
+        tts!!.speak(text, TextToSpeech.QUEUE_ADD, null,"")
+    }
+
+    public override fun onDestroy() {
+        // Shutdown TTS
+        if (tts != null) {
+            tts!!.stop()
+            tts!!.shutdown()
+        }
+        super.onDestroy()
     }
 }
