@@ -37,6 +37,7 @@ class ProductListActivity : AppCompatActivity() {
     private val ssdArray: MutableList<Dysk_SSD> = mutableListOf()
     private val karta_graficznaArray: MutableList<Karta_graficzna> = mutableListOf()
     private val motherboardArray: MutableList<Motherboard> = mutableListOf()
+    private val napedArray: MutableList<Naped_optyczny> = mutableListOf()
     private val obudowaArray: MutableList<Obudowa> = mutableListOf()
     private val procesorArray: MutableList<Procesor> = mutableListOf()
     private val ramArray: MutableList<RAM> = mutableListOf()
@@ -189,6 +190,22 @@ class ProductListActivity : AppCompatActivity() {
                 clearAllProductsArrays()
 
                 when{
+                    KOMPONENT == "Naped_optyczny" ->{
+                        dataSnapshot.children.mapNotNullTo(napedArray) {
+                            it.getValue<Naped_optyczny>(Naped_optyczny::class.java)
+                        }
+                        napedArray.toList().forEach {
+                            mNames.add(it.nazwa)
+                            var kompat="\n"
+                            for(i in it.typ){
+                                kompat+=i.nazwa
+                                kompat+="\n"
+                            }
+                            mDescs.add("Producent: "+it.producent+"\nInterfejs: "+it.interfejs+"\nTyp: "+kompat)
+                            mPrices.add(it.cena)
+                            mIcons.add(it.img)
+                        }
+                    }
                     KOMPONENT == "Dysk_HDD" -> {
                         dataSnapshot.children.mapNotNullTo(hddArray) {
                             it.getValue<Dysk_HDD>(Dysk_HDD::class.java)
@@ -231,21 +248,22 @@ class ProductListActivity : AppCompatActivity() {
                     }
 
                     KOMPONENT == "Plyta_glowna" ->{
-                        dataSnapshot.children.mapNotNullTo(motherboardArray) {
-                            it.getValue<Motherboard>(Motherboard::class.java)
-                        }
-                        motherboardArray.toList().forEach {
-                            mNames.add(it.nazwa)
-                            var gnrozsz="\n"
-                            for(i in it.gniazda_rozszerzen){
-                                gnrozsz+=i.nazwa
-                                gnrozsz+="\n"
-                            }
-                            mDescs.add("Producent: "+it.producent+"\nChipset: "+it.chipset+"\nStandard: "+it.standard+"\nStandard pamięci: "+it.standard_pamieci+"\nSloty pamięci: "+it.sloty_pamieci+"\nGniazdo procesora: "+it.gniazdo_procesora+"\nIlość procesorów: "+it.ilosc_procesorow+"\nChipset graficzny: "+it.chipset_graficzny+"\nGłębokość: "+it.glebokosc+" mm\nSzerokość: "+it.szerokosc+" mm\nGniazda rozszerzeń: "+gnrozsz)
-                            mPrices.add(it.cena)
-                            mIcons.add(it.img)
-                        }
+                    dataSnapshot.children.mapNotNullTo(motherboardArray) {
+                        it.getValue<Motherboard>(Motherboard::class.java)
                     }
+                    motherboardArray.toList().forEach {
+                        mNames.add(it.nazwa)
+                        var gnrozsz="\n"
+                        for(i in it.gniazda_rozszerzen){
+                            gnrozsz+=i.nazwa
+                            gnrozsz+="\n"
+                        }
+                        mDescs.add("Producent: "+it.producent+"\nChipset: "+it.chipset+"\nStandard: "+it.standard+"\nStandard pamięci: "+it.standard_pamieci+"\nSloty pamięci: "+it.sloty_pamieci+"\nGniazdo procesora: "+it.gniazdo_procesora+"\nIlość procesorów: "+it.ilosc_procesorow+"\nChipset graficzny: "+it.chipset_graficzny+"\nGłębokość: "+it.glebokosc+" mm\nSzerokość: "+it.szerokosc+" mm\nGniazda rozszerzeń: "+gnrozsz)
+                        mPrices.add(it.cena)
+                        mIcons.add(it.img)
+                    }
+                }
+
 
                     KOMPONENT == "Obudowa" ->{
                         dataSnapshot.children.mapNotNullTo(obudowaArray) {

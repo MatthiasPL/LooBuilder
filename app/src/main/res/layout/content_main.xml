@@ -33,6 +33,47 @@
                         android:layout_height="80dp"
                         app:layout_columnWeight="1"
                         app:layout_rowWeight="1"
+                        android:clickable="true" android:foreground="?attr/selectableItemBackground"
+                        android:id="@+id/cardNaped" android:layout_margin="0dp"
+                        app:cardBackgroundColor="@color/design_default_color_background"
+                        android:layout_marginBottom="1dp">
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" android:id="@+id/LLNaped">
+                        <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:srcCompat="@drawable/ic_shopping_basket_configuration_outline_interface_symbol_in_a_circle"
+                                android:id="@+id/ivNaped"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                android:layout_marginTop="8dp"
+                                app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                                android:layout_marginEnd="52dp" android:scaleX="1.2" android:scaleY="1.2"
+                                android:layout_marginBottom="5dp"/>
+                        <TextView
+                                android:text="Napęd optyczny"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                android:textSize="18sp" android:id="@+id/tvNaped"
+                                android:textColor="@color/design_default_color_on_secondary"
+                                app:layout_constraintStart_toEndOf="@+id/imageView11"
+                                android:layout_marginStart="16dp"/>
+                        <ImageView
+                                android:layout_width="48dp"
+                                android:layout_height="48dp" app:srcCompat="@drawable/ic_charger"
+                                android:id="@+id/imageView11"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="32dp"/>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="80dp"
+                        app:layout_columnWeight="1"
+                        app:layout_rowWeight="1"
                         app:cardBackgroundColor="@color/design_default_color_background" android:clickable="true"
                         android:foreground="?attr/selectableItemBackground" android:id="@+id/cardObudowa"
                         android:layout_margin="0dp" android:layout_marginBottom="1dp">

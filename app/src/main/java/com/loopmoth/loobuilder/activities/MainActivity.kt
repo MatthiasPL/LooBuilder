@@ -17,6 +17,7 @@ import kotlinx.android.synthetic.main.content_main.*
 import android.app.Activity
 import android.graphics.Color
 import android.opengl.Visibility
+import android.widget.Toast
 import com.google.firebase.FirebaseApp
 import com.google.firebase.database.*
 import com.loopmoth.loobuilder.classes.KoszykTest
@@ -81,6 +82,8 @@ class MainActivity : AppCompatActivity() {
         readUserID()
 
         initCart()
+
+        Toast.makeText(this@MainActivity, readID(filename), Toast.LENGTH_SHORT).show()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -96,13 +99,22 @@ class MainActivity : AppCompatActivity() {
 
         when (item.itemId) {
             R.id.action_help ->{
-                val intent = Intent(this, HelpActivity::class.java)
-                startActivity(intent)}
+                finish()
+            }
+                //val intent = Intent(this, HelpActivity::class.java)
+                //startActivity(intent)}
         }
         return super.onOptionsItemSelected(item)
     }
 
     private fun initMenuList(){
+        cardNaped.setOnClickListener{
+            val intent = Intent(this, ProductListActivity::class.java)
+            // To pass any data to next activity
+            intent.putExtra("ComponentName", "Naped_optyczny")
+            // start your next activity
+            startActivity(intent)
+        }
         cardObudowa.setOnClickListener{
             val intent = Intent(this, ProductListActivity::class.java)
             // To pass any data to next activity
